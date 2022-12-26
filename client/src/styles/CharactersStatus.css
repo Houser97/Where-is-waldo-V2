@@ -1,0 +1,26 @@
+.characters-status{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    position: absolute;
+    background-color: rgb(4, 21, 41);
+    right: -300px;
+    top: 100%;
+    padding: 10px 30px;
+    border-bottom-left-radius: 10px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transition: transform 400ms ease-in-out;
+}
+
+.character-status-image{
+    height: 100px; width: 80px;
+}
+
+.open-status{
+    transform: translateX(-300px);
+}
+
+.character-status-name{
+    font-size: 30px;
+}
