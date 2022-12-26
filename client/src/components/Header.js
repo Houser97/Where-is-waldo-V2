@@ -1,38 +1,25 @@
+import { useState } from 'react';
 import '../styles/Header.css';
+import CharactersStatus from './CharactersStatus';
 import Timer from './Timer';
-import { useRef } from 'react';
-import { CHARACTERS } from '../assets';
 
 const Header = () => {
-    const BMOelement = useRef(null);
-    const MarcelineElement = useRef(null);
-    const Tree = useRef(null);
+
+    const [toggleSvg, setToggleSvg] = useState(false);
 
     return(
         <header>
-            <div className='characters-DIV'>
-                <div className='where-is'>Where is...?</div>
-                <div className='characters'>
-                    <div className='photo-name'>
-                        <img ref={BMOelement} src={CHARACTERS.BMO} alt='BMO' className='first-photo character'></img>
-                        <div className='name'>BMO</div>
-                    </div>
-
-                    <div className='photo-name'>
-                        <img ref={MarcelineElement} src={CHARACTERS.Marceline} alt='Marceline' className='first-photo character'></img>
-                        <div className='name'>Marceline</div>
-                    </div>
-
-                    <div className='photo-name'>
-                        <img ref={Tree} src={CHARACTERS.Trunks} alt='Tree Trunks' className='first-photo character'></img>
-                        <div className='name'>Tree Trunks</div>
-                    </div>
-                </div>
+            <div className='where-is'>Where is...?</div>
+            <Timer />
+            <div className='open-close-characters' onClick={() => setToggleSvg(prev => !prev)}>
+                <svg className={`open-svg svg-header ${!toggleSvg ? '': 'svg-hide'}`} viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                </svg>
+                <svg className={`open-svg svg-header ${toggleSvg ? '': 'svg-hide'}`} viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                </svg>
             </div>
-            <div className='timer'>
-                <div>Timer</div>
-                <Timer />
-            </div>
+            <CharactersStatus toggleSvg = {toggleSvg}/>
         </header>
     )
 }
