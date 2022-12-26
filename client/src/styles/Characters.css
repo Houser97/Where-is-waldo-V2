@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.623);
+    background-color: rgba(0, 0, 0, 0.9);
     font-family: 'Titan One', cursive;
     padding: 10px 30px;
 }
@@ -19,7 +19,7 @@
     border-radius: 20px;
     font-size: 40px;
     overflow: hidden;
-    min-height: 400px;
+
 }
 
 .characters .title {
@@ -29,7 +29,7 @@
 }
 
 .characters .description{
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .characters .content{
@@ -48,7 +48,7 @@
 }
 
 .characters .photo-name .character {
-    height: 140px; width: 120px;
+    height: 120px; width: 100px;
 }
 
 .characters .name {
@@ -60,24 +60,26 @@
 
 .characters-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 180px);
-    grid-template-rows: repeat(auto-fit, 140px);
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-template-rows: repeat(auto-fill, 90px);
     justify-content: center;
     align-items: center !important;
-    padding: 10px 80px;
-    gap: 50px;
+    padding: 10px 30px;
+    gap: 20px;
     row-gap: 10px;
+    margin-top: 10px;
 }
 
 .start-game{
     background-color: rgb(6, 139, 201);
-    width: 200px;
     border-radius: 10px;
-    padding: 5px 0px;
+    padding: 15px 20px;
     align-self: center;
     opacity: 1;
     transition: transform 250ms ease-in-out;
     cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 .start-game:hover{
@@ -86,4 +88,19 @@
 
 .hide{
     display: none;
+}
+
+@media (max-width: 540px) {
+    .characters .photo-name .character {
+        height: 90px; width: 70px;
+    }
+
+    .characters .description{
+        font-size: 14px;
+    }
+
+    .characters .title {
+        padding: 10px 0px;
+        font-size: 26px;
+    }
 }
