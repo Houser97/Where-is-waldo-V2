@@ -2,63 +2,60 @@
 
 header {
     width: 100%;
-    background-color: rgb(4, 113, 238);
+    background-color: rgb(4, 21, 41);
     color: white;
     font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 60px;
+    padding: 15px 60px;
     font-family: 'Titan One', cursive;
+    /*height: 140px; Se especifica altura para tener el valor a restar a e.pageY y colocar Magic Div*/
+    position: fixed;
+    top: 0px;
+    z-index: 10;
 }
 
-.characters-DIV {
-    display: flex; flex-flow: column;
-    width: 300px;
-    align-items: center; justify-content: center; text-align: center;    
+.open-close-characters{
+    width: 45px;
+    height: 45px;
+    position: relative;
+    cursor: pointer;
 }
 
-.characters-DIV .characters {
-    display: flex; flex-flow: row;
+.svg-header{
     width: 100%;
-    justify-content: space-between; align-items: center;
+    height: 100%;
+    color: white;
+    position: absolute;
+    pointer-events: none;
 }
 
-.characters-DIV .characters .photo-name {
-    display: flex; flex-flow: column; justify-content: center; align-items: center;
-    font-size: 14px;
+.open-svg{
+    opacity: 1;
 }
 
-.characters-DIV .characters .photo-name .character {
-    height: 60px; width: 60px;
-    border: 1px solid white;
-    border-radius: 10px;
+.close-svg{
+    opacity: 0;
 }
+
+.svg-show{
+    opacity: 1;
+}
+
+.svg-hide{
+    opacity: 0;
+}
+
 
 @media (max-width: 830px) {
     header{
         font-size: 30px;
-    }
-
-    .logo {
-        width: 250px;
-    }
-
-    .characters-DIV .characters .photo-name {
-        font-size: 10px;
     }
 }
 
 @media (max-width: 700px) {
     header{
         font-size: 25px;
-    }
-
-    .logo {
-        width: 200px;
-    }
-
-    .characters-DIV .characters .photo-name .character {
-        height: 40px; width: 40px;
     }
 }
