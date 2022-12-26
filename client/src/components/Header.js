@@ -1,10 +1,7 @@
-import '../styles/header.css';
-import logo from '../images/Adventure-time-logo.png';
-import BMO from '../images/BMO.jpeg';
-import Marceline from '../images/marceline.png'
-import Trunks from '../images/Trunks.jpeg'
-import Timer from './timer';
+import '../styles/Header.css';
+import Timer from './Timer';
 import { useRef } from 'react';
+import { CHARACTERS } from '../assets';
 
 const Header = () => {
     const BMOelement = useRef(null);
@@ -17,22 +14,21 @@ const Header = () => {
                 <div className='where-is'>Where is...?</div>
                 <div className='characters'>
                     <div className='photo-name'>
-                        <img ref={BMOelement} src={BMO} alt='BMO' className='first-photo character'></img>
+                        <img ref={BMOelement} src={CHARACTERS.BMO} alt='BMO' className='first-photo character'></img>
                         <div className='name'>BMO</div>
                     </div>
 
                     <div className='photo-name'>
-                        <img ref={MarcelineElement} src={Marceline} alt='Marceline' className='first-photo character'></img>
+                        <img ref={MarcelineElement} src={CHARACTERS.Marceline} alt='Marceline' className='first-photo character'></img>
                         <div className='name'>Marceline</div>
                     </div>
 
                     <div className='photo-name'>
-                        <img ref={Tree} src={Trunks} alt='Tree Trunks' className='first-photo character'></img>
+                        <img ref={Tree} src={CHARACTERS.Trunks} alt='Tree Trunks' className='first-photo character'></img>
                         <div className='name'>Tree Trunks</div>
                     </div>
                 </div>
             </div>
-            <img src={logo} alt = "logo" className='logo'></img>
             <div className='timer'>
                 <div>Timer</div>
                 <Timer />
