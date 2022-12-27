@@ -1,5 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import './App.css';
+import { CHARACTERS } from './assets';
 import image from './assets/Images/BackgroundWaldo.jpg';
 import Characters from './components/Characters';
 import Header from './components/Header';
@@ -14,9 +15,8 @@ function App() {
 
   const imgRef = useRef(null);
   const square = useRef(null);
-  const firstLi = useRef(null);
-  const secondLi = useRef(null);
-  const thirdLi = useRef(null);
+
+  const charactersArray = useRef([]);
 
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
 
@@ -87,6 +87,7 @@ function App() {
     }
 
   const removeCharacterFromList = (character) => {
+    /*
     let element;
         if(character === "Tree Trunks"){
           element = thirdLi.current;
@@ -95,7 +96,7 @@ function App() {
         } else{
           element=secondLi.current;
         }
-        element.style.display = "none";
+        element.style.display = "none";*/
   }
 
   const setMagicDiv = (e) => {
@@ -107,7 +108,7 @@ function App() {
     
     centerMagicDiv(x,y);
     [x, y] = setRelativeCoordinates(x,y);
-    
+
     setCoordsUser({coordX: x, coordY: y});
   } 
 
@@ -164,9 +165,16 @@ function App() {
               <div className='x-design-2 x-design'></div>
               <div className='container-list'>
                 <ul className='list-characters'>
-                  <li className='li-element BMO' ref={firstLi} onClick = {getValueLi}>BMO</li>
-                  <li className='li-element middle Marceline' ref={secondLi} onClick = {getValueLi}>Marceline</li>
-                  <li className='li-element Tree-Trunks' ref={thirdLi} onClick = {getValueLi}>Tree Trunks</li>
+                  {
+                    CHARACTERS.map((character, i) => {
+                      return(
+                        <li key={`li-${i}`} 
+                        className={`li-element ${i < CHARACTERS.length -1 ? '':'last-li-element'}`} 
+                        ref={element => charactersArray[i] = element} 
+                        onClick = {getValueLi}>{character.name}</li>
+                      )
+                    })
+                  }
                 </ul>
               </div>
             </div>
