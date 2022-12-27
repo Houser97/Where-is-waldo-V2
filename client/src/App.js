@@ -107,12 +107,7 @@ function App() {
     
     centerMagicDiv(x,y);
     [x, y] = setRelativeCoordinates(x,y);
-
-    console.log('X')
-    console.log(x)
-    console.log('Y')
-    console.log(y)
-
+    
     setCoordsUser({coordX: x, coordY: y});
   } 
 
