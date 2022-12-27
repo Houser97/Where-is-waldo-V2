@@ -1,22 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 import '../styles/Timer.css';
-import { gameoverContext } from '../App';
+import { gameContext } from '../App';
 
 const Timer = () => {
 
     const [seconds, setSeconds] = useState(0);
 
-    let [gameOver, getTime] = useContext(gameoverContext);
+    const gameOver = useContext(gameContext).isGameOver;
+    const getTime = useContext(gameContext).getTime;
+    const isGame = useContext(gameContext).isGame; //Ayuda a inicar conteo al dar START en CHARACTERS.
 
     useEffect(() => {
         let intervalId;
-        if(gameOver !== "stopGame"){
+        if(gameOver !== "stopGame" && isGame){
                 intervalId =  setInterval(() => {
                 setSeconds(oldSeconds => oldSeconds + 1);
             }, 1000)
-        }
-
-        if(gameOver === "stopGame"){
+        }else if(gameOver === "stopGame"){
             getTime(seconds);
         }
 
@@ -24,7 +24,7 @@ const Timer = () => {
             clearInterval(intervalId);
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [gameOver]);
+    }, [gameOver, isGame]);
 
 
     function time_convert(num){ 
@@ -44,7 +44,7 @@ const Timer = () => {
     }
 
     return(
-        <div className='DIV-timer' id="remove">{
+        <div className='timer' id="remove">{
             time_convert(seconds)
         }</div>
     )
