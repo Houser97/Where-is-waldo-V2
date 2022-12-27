@@ -1,0 +1,3 @@
+.timer{
+    width: 150px; /*Se define para que el cambio de números no desplace ligeramente a otros contenedores.*/
+}
