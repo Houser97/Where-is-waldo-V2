@@ -108,7 +108,9 @@ function App() {
     centerMagicDiv(x,y);
     [x, y] = setRelativeCoordinates(x,y);
 
+    console.log('X')
     console.log(x)
+    console.log('Y')
     console.log(y)
 
     setCoordsUser({coordX: x, coordY: y});
@@ -163,6 +165,8 @@ function App() {
             {/*<Message toggleMessage={toggle} message = {message} />*/}
             <div className='credits'>Photo by: <a href='https://www.reddit.com/r/adventuretime/comments/bvr37b/the_land_of_ooo_adventure_time_by_tom_preston/'>Tom Preston</a></div>
             <div className='magic-div' ref={square}>
+              <div className='x-design-1 x-design'></div>
+              <div className='x-design-2 x-design'></div>
               <div className='container-list'>
                 <ul className='list-characters'>
                   <li className='li-element BMO' ref={firstLi} onClick = {getValueLi}>BMO</li>
