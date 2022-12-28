@@ -25,7 +25,7 @@ function App() {
   const [message, setMessage] = useState("Houser");
   const [isGameOver, setIsGameOver] = useState("continueGame");
   const [numberOfCharacters, setNumberOfCharacters] = useState(3);
-  const [coordsUser, setCoordsUser] = useState({coordX: 0, coordY: 0});
+  const [coordsUser, setCoordsUser] = useState({x: 0, y: 0});
   const [finalTimeUser, setFinalTimeUser] = useState(0);
   const [username, setUsername] = useState(0);
 
@@ -73,16 +73,16 @@ function App() {
       let distance = Math.round(Math.sqrt(componentX+componentY));
 
       if(distance < 5){
-        /*console.log(`You hit ${character}`);*/
-        removeCharacterFromList(character);
+        console.log(`You hit ${character}`);
+        /*removeCharacterFromList(character);
         setToggle("show");
         setMessage(`You have found ${character}!`);
-        setNumberOfCharacters(number => number - 1);
+        setNumberOfCharacters(number => number - 1);*/
       } else {
-        /*console.log("Keep trying");*/
-        setToggle("show-incorrect");
+        console.log("Keep trying");
+        /*setToggle("show-incorrect");
         setMessage(character);
-        setMessage("Keep trying")
+        setMessage("Keep trying")*/
       }
     }
 
@@ -109,24 +109,20 @@ function App() {
     centerMagicDiv(x,y);
     [x, y] = setRelativeCoordinates(x,y);
 
-    setCoordsUser({coordX: x, coordY: y});
+    setCoordsUser({x, y});
   } 
 
-  const getValueLi = async (e) => {/*
-    const magicDiv = square.current;
-    magicDiv.style.display = "none";
-
-    const li = e.target.textContent;
-    const coords = await getCoordsBackEnd(li);
-    let coordsSolution = "";
-    coords.forEach(async doc => coordsSolution = doc.data())
-    /*console.log(`Coord Solution X: ${coordsSolution.coordX}`)
-    console.log(`Coord Solution Y: ${coordsSolution.coordY}`)
-    console.log(coordsSolution.character)
-    console.log(`Coord Selected X: ${coordsUser.coordX}`)
-    console.log(`Coord Selected Y: ${coordsUser.coordY}`)
-    checkIfSelected(coordsUser.coordX, coordsUser.coordY, coordsSolution.coordX,
-      coordsSolution.coordY, coordsSolution.character);*/
+  const getValueLi = (e) => {
+    const CharacterCoords = {}
+    const CHARACTER = e.target.textContent;
+    fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
+    .then(response => response.json())
+    .then(data => { console.log(data)
+      /*
+      CharacterCoords.x = data.x;
+      CharacterCoords.y = data.y
+      checkIfSelected(coordsUser.x, coordsUser.y, CharacterCoords.x, CharacterCoords.y, CHARACTER)*/
+    })
   }
 
   const getUserName = (e) => {
