@@ -4,8 +4,8 @@ import { CHARACTERS } from './assets';
 import image from './assets/Images/BackgroundWaldo.jpg';
 import Characters from './components/Characters';
 import Header from './components/Header';
-/*import Message from './components/Message';
-import Form from './components/Form';
+import Message from './components/Message';
+/*import Form from './components/Form';
 import Ladderboard from './components/Ladderboard';*/
 
 export const gameContext = createContext();
@@ -114,8 +114,13 @@ function App() {
     .then(data => {
       if(checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER)){
         removeCharacterFromList(e)
+        setToggle("show");
+        setMessage(`You have found ${CHARACTER}!`);
+        setNumberOfCharacters(number => number - 1);
       } else {
-
+        setToggle("show-incorrect");
+        setMessage(CHARACTER);
+        setMessage("Keep trying")
       }
       const magicDiv = square.current;
       magicDiv.style.display = "none";
@@ -151,7 +156,6 @@ function App() {
           <Characters />
           <div className='image-container'>
             <img src={image} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
-            {/*<Message toggleMessage={toggle} message = {message} />*/}
             <div className='credits'>Photo by: <a href='https://www.reddit.com/r/adventuretime/comments/bvr37b/the_land_of_ooo_adventure_time_by_tom_preston/'>Tom Preston</a></div>
             <div className='magic-div' ref={square}>
               <div className='x-design-1 x-design'></div>
