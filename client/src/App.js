@@ -113,15 +113,13 @@ function App() {
   } 
 
   const getValueLi = (e) => {
-    const CharacterCoords = {}
     const CHARACTER = e.target.textContent;
     fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
     .then(response => response.json())
-    .then(data => { console.log(data)
-      /*
-      CharacterCoords.x = data.x;
-      CharacterCoords.y = data.y
-      checkIfSelected(coordsUser.x, coordsUser.y, CharacterCoords.x, CharacterCoords.y, CHARACTER)*/
+    .then(data => {
+      checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER);
+      const magicDiv = square.current;
+      magicDiv.style.display = "none";
     })
   }
 
