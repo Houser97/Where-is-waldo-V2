@@ -16,7 +16,7 @@ function App() {
   const imgRef = useRef(null);
   const square = useRef(null);
 
-  const charactersArray = useRef([]);
+  const charactersArray = useRef([]); //Referencia de elementos LI de Magic Div.
 
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
 
@@ -74,29 +74,24 @@ function App() {
 
       if(distance < 5){
         console.log(`You hit ${character}`);
+        return true
         /*removeCharacterFromList(character);
         setToggle("show");
         setMessage(`You have found ${character}!`);
         setNumberOfCharacters(number => number - 1);*/
       } else {
         console.log("Keep trying");
+        return false
         /*setToggle("show-incorrect");
         setMessage(character);
         setMessage("Keep trying")*/
       }
     }
 
-  const removeCharacterFromList = (character) => {
-    /*
-    let element;
-        if(character === "Tree Trunks"){
-          element = thirdLi.current;
-        } else if(character === "BMO"){
-          element = firstLi.current;
-        } else{
-          element=secondLi.current;
-        }
-        element.style.display = "none";*/
+  const removeCharacterFromList = (liElement) => {
+    const liId = liElement.target.dataset.id;
+    const li = charactersArray.current[liId ]
+    li.style.display = 'none'
   }
 
   const setMagicDiv = (e) => {
@@ -117,7 +112,11 @@ function App() {
     fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
     .then(response => response.json())
     .then(data => {
-      checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER);
+      if(checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER)){
+        removeCharacterFromList(e)
+      } else {
+
+      }
       const magicDiv = square.current;
       magicDiv.style.display = "none";
     })
@@ -163,8 +162,9 @@ function App() {
                     CHARACTERS.map((character, i) => {
                       return(
                         <li key={`li-${i}`} 
+                        data-id = {i}
                         className={`li-element ${i < CHARACTERS.length -1 ? '':'last-li-element'}`} 
-                        ref={element => charactersArray[i] = element} 
+                        ref={element => charactersArray.current[i] = element} 
                         onClick = {getValueLi}>{character.name}</li>
                       )
                     })
