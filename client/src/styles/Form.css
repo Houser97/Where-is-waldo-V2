@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
 .popup-form {
-    position: absolute;
+    position: fixed;
     height: 100%; width: 100%;
     display: none; flex-flow: column;
     align-items: center; justify-content: center;
