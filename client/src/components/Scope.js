@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../styles/Scope.css'
 import { CHARACTERS } from '../assets';
+import { gameContext } from '../App';
 
 const Scope = ({scopeRef}) => {
+
+    const setToggleMessage = useContext(gameContext).setToggleMessage;
+    const setMessage = useContext(gameContext).setMessage;
 
     const removeCharacterFromList = (liElement) => {
         liElement.target.style.display = 'none'
@@ -14,6 +18,9 @@ const Scope = ({scopeRef}) => {
         .then(response => response.json())
         .then(data => {
           if(/*checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER)*/true){
+            removeCharacterFromList(e)
+            setToggleMessage(true);
+            setMessage(`You have found ${CHARACTER}!`);
             /*
             removeCharacterFromList(e)
             setToggle("show");
