@@ -1,14 +1,11 @@
 import React, { useRef, useState } from 'react'
 import '../styles/Board.css'
-import { CHARACTERS } from '../assets';
 import image from '../assets/Images/BackgroundWaldo.jpg';
+import Scope from './Scope';
 
 const Board = () => {
 
     const [coordsUser, setCoordsUser] = useState({x: 0, y: 0});
-    const [toggle, setToggle] = useState("hidden");
-    const [message, setMessage] = useState("Houser");
-    const [numberOfCharacters, setNumberOfCharacters] = useState(3);
 
     const imgRef = useRef(null);
     const square = useRef(null);
@@ -55,12 +52,7 @@ const Board = () => {
             setMessage("Keep trying")*/
           }
         }
-    
-      const removeCharacterFromList = (liElement) => {
-        const liId = liElement.target.dataset.id;
-        const li = charactersArray.current[liId ]
-        li.style.display = 'none'
-      }
+
     
       const setMagicDiv = (e) => {
         const magicDiv = square.current;
@@ -74,50 +66,13 @@ const Board = () => {
     
         setCoordsUser({x, y});
       } 
-    
-      const getValueLi = (e) => {
-        const CHARACTER = e.target.textContent;
-        fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
-        .then(response => response.json())
-        .then(data => {
-          if(checkIfSelected(coordsUser.x, coordsUser.y, data.x, data.y, CHARACTER)){
-            removeCharacterFromList(e)
-            setToggle("show");
-            setMessage(`You have found ${CHARACTER}!`);
-            setNumberOfCharacters(number => number - 1);
-          } else {
-            setToggle("show-incorrect");
-            setMessage(CHARACTER);
-            setMessage("Keep trying")
-          }
-          const magicDiv = square.current;
-          magicDiv.style.display = "none";
-        })
-      }
+
 
   return (
     <div className='image-container'>
     <img src={image} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
     <div className='credits'>Photo by: <a href='https://www.reddit.com/r/adventuretime/comments/bvr37b/the_land_of_ooo_adventure_time_by_tom_preston/'>Tom Preston</a></div>
-    <div className='magic-div' ref={square}>
-        <div className='x-design-1 x-design'></div>
-        <div className='x-design-2 x-design'></div>
-        <div className='container-list'>
-        <ul className='list-characters'>
-            {
-            CHARACTERS.map((character, i) => {
-                return(
-                <li key={`li-${i}`} 
-                data-id = {i}
-                className={`li-element ${i < CHARACTERS.length -1 ? '':'last-li-element'}`} 
-                ref={element => charactersArray.current[i] = element} 
-                onClick = {getValueLi}>{character.name}</li>
-                )
-            })
-            }
-        </ul>
-        </div>
-    </div>
+    <Scope scopeRef={square} />
     </div>
   )
 }
