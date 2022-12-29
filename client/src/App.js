@@ -15,8 +15,9 @@ function App() {
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
 
 
-  const [toggle, setToggle] = useState("hidden");
+  const [toggleMessage, setToggleMessage] = useState(false);
   const [message, setMessage] = useState("Houser");
+
   const [isGameOver, setIsGameOver] = useState("continueGame");
   const [numberOfCharacters, setNumberOfCharacters] = useState(3);
   const [coordsUser, setCoordsUser] = useState({x: 0, y: 0});
@@ -27,13 +28,13 @@ function App() {
 
   useEffect(() => {
     const intervalId = setTimeout(() => {
-      setToggle("hidden");
+      setToggleMessage(false);
     }, 2000);
 
     return () => {
       clearTimeout(intervalId);
     }
-  }, [toggle])
+  }, [toggleMessage])
 
   useEffect(() => {
     if(numberOfCharacters === 0){
@@ -59,7 +60,7 @@ function App() {
     }
   }
 
-  const gameProvider = {isGameOver, getTime, isGame, setIsGame}
+  const gameProvider = {isGameOver, getTime, isGame, setIsGame, setToggleMessage, setMessage}
 
   return (
     <gameContext.Provider value={gameProvider}>
@@ -69,7 +70,7 @@ function App() {
           <Form getUserName={getUserName} gameOver = {isGameOver} />
           {/*<Ladderboard />*/}
           <Characters />
-          <Message toggleMessage={toggle} message = {message} />
+          <Message toggleMessage={toggleMessage} message = {message} />
           <Board />
         </div>
         </userContext.Provider>
