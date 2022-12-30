@@ -20,7 +20,10 @@ function App() {
 
   const [isGameOver, setIsGameOver] = useState("continueGame");
   const [numberOfCharacters, setNumberOfCharacters] = useState(3);
+
   const [coordsUser, setCoordsUser] = useState({x: 0, y: 0});
+  const [characterHit, setCharacterHit] = useState(null); // Estado que cambia en SCOPE.
+
   const [finalTimeUser, setFinalTimeUser] = useState(0);
   const [username, setUsername] = useState(0);
 
@@ -29,6 +32,7 @@ function App() {
   useEffect(() => {
     const intervalId = setTimeout(() => {
       setToggleMessage(false);
+      clearTimeout(intervalId);
     }, 2000);
 
     return () => {
@@ -41,6 +45,17 @@ function App() {
       setIsGameOver("stopGame");
     }
   }, [numberOfCharacters])
+
+  useEffect(() => {
+    if(characterHit){
+      setToggleMessage(true);
+      setNumberOfCharacters(number => number - 1);
+      console.log(characterHit)
+    } else if (characterHit === false) {
+      setToggleMessage(true);
+      console.log(characterHit)
+    }
+  }, [characterHit])
 
 
   const getUserName = (e) => {
@@ -60,7 +75,7 @@ function App() {
     }
   }
 
-  const gameProvider = {isGameOver, getTime, isGame, setIsGame, setToggleMessage, setMessage}
+  const gameProvider = {isGameOver, getTime, isGame, setIsGame , setCharacterHit, setToggleMessage}
 
   return (
     <gameContext.Provider value={gameProvider}>
@@ -70,7 +85,7 @@ function App() {
           <Form getUserName={getUserName} gameOver = {isGameOver} />
           {/*<Ladderboard />*/}
           <Characters />
-          <Message toggleMessage={toggleMessage} message = {message} />
+          <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
           <Board />
         </div>
         </userContext.Provider>
