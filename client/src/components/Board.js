@@ -10,8 +10,6 @@ const Board = () => {
   const imgRef = useRef(null);
   const square = useRef(null);
 
-  const charactersArray = useRef([]); //Referencia de elementos LI de Magic Div.
-
   const centerMagicDiv = (x,y) =>{
       const width = square.current.offsetWidth/2;
       const height = square.current.offsetHeight/2;
@@ -44,7 +42,6 @@ const Board = () => {
 
     setCoordsUser({x, y});
   } 
-
 
   return (
     <div className='image-container'>
