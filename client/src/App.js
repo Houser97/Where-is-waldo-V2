@@ -53,17 +53,6 @@ function App() {
     } 
   }, [characterHit])
 
-  const getUserName = (e) => {
-    e.preventDefault();
-    const popUpForm = e.target.parentNode;
-    popUpForm.style.display = "none";
-    let name = [...e.target];
-    let userName = name[0].value;
-    setUsername(userName);
-    /*console.log(name[0].value);*/
-    e.target.reset();
-  }
-
   const getTime = (seconds) => {
       setFinalTimeUser(previousTime => previousTime + seconds);
   }
@@ -75,7 +64,7 @@ function App() {
       <userContext.Provider value={[username, finalTimeUser]}>
         <div className="App">
           <Header />
-          <Form getUserName={getUserName} gameOver = {isGameOver} />
+          <Form gameOver = {isGameOver} time = {finalTimeUser}/>
           {/*<Ladderboard />*/}
           <Characters />
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
