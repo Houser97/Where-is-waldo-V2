@@ -5,11 +5,15 @@ import { gameContext } from '../App';
 
 const Scope = ({scopeRef, coordsUser}) => {
 
+  const setCharacterHit = useContext(gameContext).setCharacterHit
+  const setToggleMessage = useContext(gameContext).setToggleMessage
+
     const removeCharacterFromList = (liElement) => {
         liElement.target.style.display = 'none'
     }
 
     const checkIfSelected = (solutionX, solutionY) => {
+      console.log(coordsUser)
       let componentX = Math.pow(Math.abs(coordsUser.x-solutionX),2);
       let componentY = Math.pow(Math.abs(coordsUser.y-solutionY),2)
       let distance = Math.round(Math.sqrt(componentX+componentY));
@@ -20,29 +24,20 @@ const Scope = ({scopeRef, coordsUser}) => {
       return false  
     }
 
-    const checkHit = (e) => {
+    const getCharacter = (e) => {
         const CHARACTER = e.target.textContent;
         fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
         .then(response => response.json())
         .then(data => {
           if(checkIfSelected(data.x, data.y)){
-            removeCharacterFromList(e)
-            console.log(CHARACTER);
-            /*setToggleMessage(true);
-            setMessage(`You have found ${CHARACTER}!`);
-            
-            removeCharacterFromList(e)
-            setToggle("show");
-            setMessage(`You have found ${CHARACTER}!`);
-            setNumberOfCharacters(number => number - 1);*/
-          } else {console.log('Keep trying');
-            /*setToggle("show-incorrect");
-            setMessage(CHARACTER);
-            setMessage("Keep trying")*/
+            removeCharacterFromList(e);
+            setCharacterHit(CHARACTER);
+          } else {
+            setCharacterHit(false);
+            setToggleMessage(true);
           }
-          const magicDiv = scopeRef.current;
-          magicDiv.style.display = "none";
         })
+
       }
 
   return (
@@ -57,7 +52,7 @@ const Scope = ({scopeRef, coordsUser}) => {
                       <li key={`li-${i}`} 
                       data-id = {i}
                       className={`li-element ${i < CHARACTERS.length -1 ? '':'last-li-element'}`} 
-                      onClick = {checkHit}>{character.name}</li>
+                      onClick = {getCharacter}>{character.name}</li>
                       )
                   })
                 }
