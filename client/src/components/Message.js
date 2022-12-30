@@ -1,8 +1,10 @@
 import '../styles/Message.css';
 
-const Message = ({toggleMessage, message}) => {
+const Message = ({toggleMessage, characterHit}) => {
     return(
-        <div className= {`message ${toggleMessage ? 'show':'hidden'}`}>{message}</div>
+        <div className= {`message ${toggleMessage ? `${characterHit ? 'show':'show-incorrect'}` :'hidden'}`}>
+            {characterHit ? `You have found ${characterHit}` : 'Keep trying'}
+        </div>
     )
 }
 
