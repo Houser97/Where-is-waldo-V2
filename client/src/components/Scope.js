@@ -36,6 +36,8 @@ const Scope = ({scopeRef, coordsUser}) => {
             setCharacterHit(false);
             setToggleMessage(true);
           }
+          const magicDiv = scopeRef.current
+          magicDiv.style.display = 'none'
         })
 
       }
