@@ -16,13 +16,12 @@ function App() {
 
 
   const [toggleMessage, setToggleMessage] = useState(false);
-  const [message, setMessage] = useState("Houser");
 
-  const [isGameOver, setIsGameOver] = useState("continueGame");
+
+  const [isGameOver, setIsGameOver] = useState(false);
   const [numberOfCharacters, setNumberOfCharacters] = useState(3);
 
-  const [coordsUser, setCoordsUser] = useState({x: 0, y: 0});
-  const [characterHit, setCharacterHit] = useState(null); // Estado que cambia en SCOPE.
+  const [characterHit, setCharacterHit] = useState(null); // Estado que cambia en SCOPE y pasa nombre de personaje a Message.
 
   const [finalTimeUser, setFinalTimeUser] = useState(0);
   const [username, setUsername] = useState(0);
@@ -42,7 +41,7 @@ function App() {
 
   useEffect(() => {
     if(numberOfCharacters === 0){
-      setIsGameOver("stopGame");
+      setIsGameOver(true);
     }
   }, [numberOfCharacters])
 
@@ -67,7 +66,7 @@ function App() {
   }
 
   const getTime = (seconds) => {
-    if(isGameOver === "stopGame"){
+    if(isGameOver){
       setFinalTimeUser(previousTime => previousTime + seconds);
     }
   }
