@@ -47,14 +47,11 @@ function App() {
   }, [numberOfCharacters])
 
   useEffect(() => {
+    // Hace aparecer Message solo cuando se halla un personaje.
     if(characterHit){
       setToggleMessage(true);
       setNumberOfCharacters(number => number - 1);
-      console.log(characterHit)
-    } else if (characterHit === false) {
-      setToggleMessage(true);
-      console.log(characterHit)
-    }
+    } 
   }, [characterHit])
 
 
