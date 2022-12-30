@@ -13,7 +13,6 @@ const Scope = ({scopeRef, coordsUser}) => {
     }
 
     const checkIfSelected = (solutionX, solutionY) => {
-      console.log(coordsUser)
       let componentX = Math.pow(Math.abs(coordsUser.x-solutionX),2);
       let componentY = Math.pow(Math.abs(coordsUser.y-solutionY),2)
       let distance = Math.round(Math.sqrt(componentX+componentY));
