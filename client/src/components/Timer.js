@@ -12,11 +12,11 @@ const Timer = () => {
 
     useEffect(() => {
         let intervalId;
-        if(gameOver !== "stopGame" && isGame){
+        if(!gameOver && isGame){
                 intervalId =  setInterval(() => {
                 setSeconds(oldSeconds => oldSeconds + 1);
             }, 1000)
-        }else if(gameOver === "stopGame"){
+        }else if(gameOver){
             getTime(seconds);
         }
 
