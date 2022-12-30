@@ -1,6 +1,16 @@
 import '../styles/Form.css';
 
-const Form = ({getUserName, gameOver}) => {
+const Form = ({gameOver, time}) => {
+
+    const saveUser = (e) => {
+        e.preventDefault();
+        const popUpForm = e.target.parentNode;
+        popUpForm.style.display = "none";
+        let name = [...e.target];
+        let userName = name[0].value;
+        /*console.log(name[0].value);*/
+        e.target.reset();
+      }
 
     const openLadderboard = () => {
         const ladder =document.querySelector(".ladderboard-section");
@@ -10,7 +20,7 @@ const Form = ({getUserName, gameOver}) => {
     return(
         <div className={`popup-form ${gameOver}`}>
             <div className='win'>You win!</div>
-            <form className='form' onSubmit={getUserName}>
+            <form className='form' onSubmit={saveUser}>
                 <div className='form-title'>Enter a name to save your time</div>
                 <div className='input-section'>
                     <label htmlFor='name'>Name</label>
