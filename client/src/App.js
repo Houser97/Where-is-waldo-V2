@@ -53,7 +53,6 @@ function App() {
     } 
   }, [characterHit])
 
-
   const getUserName = (e) => {
     e.preventDefault();
     const popUpForm = e.target.parentNode;
@@ -66,9 +65,7 @@ function App() {
   }
 
   const getTime = (seconds) => {
-    if(isGameOver){
       setFinalTimeUser(previousTime => previousTime + seconds);
-    }
   }
 
   const gameProvider = {isGameOver, getTime, isGame, setIsGame , setCharacterHit, setToggleMessage}
