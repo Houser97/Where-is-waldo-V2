@@ -7,12 +7,11 @@ const Ladderboard = ({playersArray, toggleLadderboard}) => {
 
     useEffect(() => {
         if(playersArray.length > 0){
-            let players = [...playersArray].slice(5);
-            players = players.map((player) => {
+            let players = [...playersArray].slice(0,5);
+            players.forEach((player) => {
                 player.time = time_convert(player.time)
             })
             setTopFive(players)
-            console.log(players)
         }
     }, [playersArray])
 
