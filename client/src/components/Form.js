@@ -1,11 +1,16 @@
+import { useContext } from 'react';
+import { gameContext } from '../App';
 import '../styles/Form.css';
 
+
 const Form = ({isGameOver, time}) => {
+
+    const setPlayersArray = useContext(gameContext).setPlayersArray;
+    const setToggleLadderboard = useContext(gameContext).setToggleLadderboard;
 
     const saveUser = (e) => {
         e.preventDefault();
         const popUpForm = e.target.parentNode;
-        popUpForm.style.display = "none";
         let name = [...e.target];
         let username = name[0].value;
         fetch('http://localhost:5000/api/register_score', {
@@ -14,9 +19,12 @@ const Form = ({isGameOver, time}) => {
                 'Content-Type': 'application/json',
             }, 
             body: JSON.stringify({username, time})
+        }).then(response => response.json())
+        .then(players => {
+            setPlayersArray(players);
+            setToggleLadderboard(true);
+            popUpForm.style.display = "none";
         })
-        /*console.log(name[0].value);*/
-        e.target.reset();
       }
 
     const openLadderboard = () => {
