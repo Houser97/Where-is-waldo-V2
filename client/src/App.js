@@ -14,6 +14,9 @@ function App() {
 
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
 
+  //Estados de Ladderboard
+  const [playersArray, setPlayersArray] = useState([]);
+  const [toggleLadderboard, setToggleLadderboard] = useState(true);
 
   const [toggleMessage, setToggleMessage] = useState(false);
 
@@ -57,7 +60,8 @@ function App() {
       setFinalTimeUser(previousTime => previousTime + seconds);
   }
 
-  const gameProvider = {isGameOver, getTime, isGame, setIsGame , setCharacterHit, setToggleMessage}
+  const gameProvider = {isGameOver, getTime, isGame, setIsGame , setCharacterHit, setToggleMessage,
+    setPlayersArray, setToggleLadderboard}
 
   return (
     <gameContext.Provider value={gameProvider}>
@@ -65,7 +69,7 @@ function App() {
         <div className="App">
           <Header />
           <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
-          <Ladderboard />
+          <Ladderboard toggleLadderboard={toggleLadderboard} playersArray = {playersArray} />
           <Characters />
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
           <Board />
