@@ -5,7 +5,7 @@ import { saveData, getLadderboard } from '../firebase';
 
 const Ladderboard = ({playersArray, toggleLadderboard}) => {
 
-    const [topFive, setTopFive] = useState(null);
+    const [topFive, setTopFive] = useState([]);
 
     useEffect(() => {
         if(playersArray.length > 0){
@@ -38,40 +38,22 @@ const Ladderboard = ({playersArray, toggleLadderboard}) => {
         <div className='ladderboard-section'>
             <div className='ladderboard'>
                 <div className='title-ladderboard'>Top 5</div>
-                { (playersOrdered.length > 0) ? (
+                { (topFive.length > 0) ? (
                 <ol className='list-top-player'>
-                    <li className='player player-1'>
-                        <div className='list-player'>
-                            <div className='username'>{playersOrdered[0].name}</div>
-                            <div className='user-time'>{time_convert(playersOrdered[0].time)}</div>
-                        </div>
-                    </li>
-                    <li className='player player-2'>
-                        <div className='list-player'>
-                            <div className='username'>{playersOrdered[1].name}</div>
-                            <div className='user-time'>{time_convert(playersOrdered[1].time)}</div>
-                        </div>
-                    </li>
-                    <li className='player player-3'>
-                        <div className='list-player'>
-                            <div className='username'>{playersOrdered[2].name}</div>
-                            <div className='user-time'>{time_convert(playersOrdered[2].time)}</div>
-                        </div>
-                    </li>
-                    <li className='player player-4'>
-                        <div className='list-player'>
-                            <div className='username'>{playersOrdered[3].name}</div>
-                            <div className='user-time'>{time_convert(playersOrdered[3].time)}</div>
-                        </div>
-                    </li>
-                    <li className='player player-5'>
-                        <div className='list-player'>
-                            <div className='username'>{playersOrdered[4].name}</div>
-                            <div className='user-time'>{time_convert(playersOrdered[4].time)}</div>
-                        </div>
-                    </li>
+                    {
+                        topFive.map((player, i) => {
+                            return(
+                                <li className={`player player-${i+1}`}>
+                                    <div className='list-player'>
+                                        <div className='username'>{player.username}</div>
+                                        <div className='user-time'>{player.time}</div>
+                                    </div>
+                                </li>
+                            )
+                        })
+                    }
                 </ol>
-                ) : ("empty")}
+                ) : ("Loading ...")}
             </div>
         </div>
     )
