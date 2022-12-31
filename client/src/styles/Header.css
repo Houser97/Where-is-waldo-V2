@@ -58,5 +58,18 @@ header {
 @media (max-width: 700px) {
     header{
         font-size: 25px;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    header{
+        font-size: 20px;
+        padding: 15px 20px;
+    }
+
+    .open-close-characters{
+        width: 35px;
+        height: 35px;
     }
 }
