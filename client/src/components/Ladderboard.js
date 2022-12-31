@@ -35,7 +35,7 @@ const Ladderboard = ({playersArray, toggleLadderboard}) => {
     }
 
     return(
-        <div className='ladderboard-section'>
+        <div className={`ladderboard-section ${toggleLadderboard ? 'show':''}`}>
             <div className='ladderboard'>
                 <div className='title-ladderboard'>Top 5</div>
                 { (topFive.length > 0) ? (
