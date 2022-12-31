@@ -29,6 +29,7 @@ header {
     color: white;
     position: absolute;
     pointer-events: none;
+    left: 0px;
 }
 
 .open-svg{
