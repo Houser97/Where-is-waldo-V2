@@ -1,7 +1,5 @@
 import '../styles/Ladderboard.css';
-import { userContext } from '../App';
-import { useContext, useEffect, useState } from 'react';
-import { saveData, getLadderboard } from '../firebase';
+import { useEffect, useState } from 'react';
 
 const Ladderboard = ({playersArray, toggleLadderboard}) => {
 
