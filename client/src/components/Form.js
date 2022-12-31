@@ -1,6 +1,6 @@
 import '../styles/Form.css';
 
-const Form = ({gameOver, time}) => {
+const Form = ({isGameOver, time}) => {
 
     const saveUser = (e) => {
         e.preventDefault();
@@ -25,7 +25,7 @@ const Form = ({gameOver, time}) => {
     }
 
     return(
-        <div className={`popup-form ${gameOver}`}>
+        <div className={`popup-form ${isGameOver ? 'stopGame':''}`}>
             <div className='win'>You win!</div>
             <form className='form' onSubmit={saveUser}>
                 <div className='form-title'>Enter a name to save your time</div>
