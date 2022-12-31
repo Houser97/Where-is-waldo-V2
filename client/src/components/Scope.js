@@ -32,8 +32,8 @@ const Scope = ({scopeRef, coordsUser}) => {
             removeCharacterFromList(e);
             setCharacterHit(CHARACTER);
           } else {
-            setCharacterHit(false);
-            setToggleMessage(true);
+            setCharacterHit(false); // Se limpia para que Message renderice 'Keep Trying'.
+            setToggleMessage(true); // Renderiza mensaje con 'Keep Trying'
           }
           const magicDiv = scopeRef.current
           magicDiv.style.display = 'none'
