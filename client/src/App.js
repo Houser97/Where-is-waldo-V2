@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Message from './components/Message';
 import Form from './components/Form';
 import Board from './components/Board';
-/*import Ladderboard from './components/Ladderboard';*/
+import Ladderboard from './components/Ladderboard';
 
 export const gameContext = createContext();
 export const userContext = createContext();
@@ -65,7 +65,7 @@ function App() {
         <div className="App">
           <Header />
           <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
-          {/*<Ladderboard />*/}
+          <Ladderboard />
           <Characters />
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
           <Board />
