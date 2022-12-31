@@ -40,7 +40,7 @@ function App() {
   }, [toggleMessage])
 
   useEffect(() => {
-    if(numberOfCharacters === 0){
+    if(numberOfCharacters <= 0){
       setIsGameOver(true);
     }
   }, [numberOfCharacters])
@@ -64,7 +64,7 @@ function App() {
       <userContext.Provider value={[username, finalTimeUser]}>
         <div className="App">
           <Header />
-          <Form gameOver = {isGameOver} time = {finalTimeUser}/>
+          <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
           {/*<Ladderboard />*/}
           <Characters />
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
