@@ -8,11 +8,11 @@ const Timer = () => {
 
     const gameOver = useContext(gameContext).isGameOver;
     const getTime = useContext(gameContext).getTime;
-    const isGame = useContext(gameContext).isGame; //Ayuda a inicar conteo al dar START en CHARACTERS.
+    const startGame = useContext(gameContext).startGame; //Ayuda a inicar conteo al dar START en CHARACTERS.
 
     useEffect(() => {
         let intervalId;
-        if(!gameOver && isGame){
+        if(!gameOver && startGame){
                 intervalId =  setInterval(() => {
                 setSeconds(oldSeconds => oldSeconds + 1);
             }, 1000)
@@ -24,7 +24,7 @@ const Timer = () => {
             clearInterval(intervalId);
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [gameOver, isGame]);
+    }, [gameOver, startGame]);
 
 
     function time_convert(num){ 

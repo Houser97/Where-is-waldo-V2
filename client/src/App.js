@@ -29,7 +29,7 @@ function App() {
   const [finalTimeUser, setFinalTimeUser] = useState(0);
   const [username, setUsername] = useState(0);
 
-  const[isGame, setIsGame] = useState(false); //Ayudará a iniciar COUNTER al presionar START en CHARACTERS
+  const[startGame, setStartGame] = useState(false); //Ayudará a iniciar COUNTER al presionar START en CHARACTERS
 
   useEffect(() => {
     const intervalId = setTimeout(() => {
@@ -60,8 +60,7 @@ function App() {
       setFinalTimeUser(previousTime => previousTime + seconds);
   }
 
-  const gameProvider = {isGameOver, getTime, isGame, setIsGame , setCharacterHit, setToggleMessage,
-    setPlayersArray, setToggleLadderboard}
+  const gameProvider = {isGameOver, getTime, setStartGame, startGame, setCharacterHit, setToggleMessage,setPlayersArray, setToggleLadderboard}
 
   return (
     <gameContext.Provider value={gameProvider}>

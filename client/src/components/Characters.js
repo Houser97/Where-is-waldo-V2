@@ -5,11 +5,11 @@ import { gameContext } from '../App'
 
 const Characters = () => {
 
-    const isGame = useContext(gameContext).isGame;
-    const setIsGame = useContext(gameContext).setIsGame;
+    const startGame = useContext(gameContext).startGame;
+    const setStartGame = useContext(gameContext).setStartGame;
 
   return (
-    <div className={`characters-background ${isGame ? 'hide':''}`}>
+    <div className={`characters-background ${startGame ? 'hide':''}`}>
         <div className='characters'>
             <div className='title'>Where are ...?</div>
             <div className='content'>
@@ -26,7 +26,7 @@ const Characters = () => {
                         })
                     }
                 </div>
-                <div className='start-game' onClick={() => setIsGame(true)}>Start</div>
+                <div className='start-game' onClick={() => setStartGame(true)}>Start</div>
             </div>
         </div>
     </div>
