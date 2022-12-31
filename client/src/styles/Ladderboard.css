@@ -3,7 +3,7 @@
 .ladderboard-section {
     display: none; flex-flow: column;
     align-items: center; justify-content: center;
-    position: absolute;
+    position: fixed;
     z-index: 10;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -35,4 +35,8 @@
     display: flex; flex-flow: row;
     justify-content: space-between;
     padding-left: 20px;
+}
+
+.ladderboard-section.showLadderboard {
+    display: flex;
 }
