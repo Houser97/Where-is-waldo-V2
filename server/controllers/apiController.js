@@ -24,7 +24,7 @@ exports.set_score = [
             username: req.body.username,
             time: req.body.time,
         }).save((err, user) => {
-            User.find((err, users) => {
+            User.find().sort({time: 1}).exec((err, users) => {
                 if(err) return res.json('Error');
                 return res.json(users)
             })
