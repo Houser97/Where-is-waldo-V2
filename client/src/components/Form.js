@@ -38,8 +38,8 @@ const Form = ({isGameOver, time}) => {
             <form className='form' onSubmit={saveUser}>
                 <div className='form-title'>Enter a name to save your time</div>
                 <div className='input-section'>
-                    <label htmlFor='name'>Name</label>
-                    <input id='name' name='name' required></input>
+                    <label htmlFor='name'>Username</label>
+                    <input id='name' name='name' maxLength={10} required></input>
                 </div>
                 <div className='button-section'>
                     <button className='submit' onClick={openLadderboard}>Submit</button>
