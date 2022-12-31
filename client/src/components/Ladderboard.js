@@ -3,52 +3,21 @@ import { userContext } from '../App';
 import { useContext, useEffect, useState } from 'react';
 import { saveData, getLadderboard } from '../firebase';
 
-const Ladderboard = () => {
-    let [username, finalTimeUser] = useContext(userContext);
+const Ladderboard = ({playersArray, toggleLadderboard}) => {
 
-    const [players, setPlayers] = useState([])
-    const [shouldUpdatePlayers, setShouldUpdatePlayers] = useState("No");
-    const [playersOrdered, setPlayersOrdered] = useState([]);
-
-    /*setPlayers(playerHelper);*/
-    useEffect(() => {
-        if(username !== 0 && finalTimeUser !== 0){
-          async function fetchScores(){
-            await saveData(username, finalTimeUser);
-            let ladderboard = await getLadderboard();
-            ladderboard.forEach(doc => {
-                /*console.log(doc.data())*/
-                setPlayers(oldArray => [...oldArray, doc.data()]);
-            });
-          }
-          fetchScores();
-          if(shouldUpdatePlayers === "No") setShouldUpdatePlayers("Yes");
-          else setShouldUpdatePlayers("No");
-        }
-        
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [username, finalTimeUser])
+    const [topFive, setTopFive] = useState(null);
 
     useEffect(() => {
-        sortData();
-        return () => {
-            sortData();
-        }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [shouldUpdatePlayers, players])
-
-
-    const sortData = () => {
-        if(players.length > 0){
-            let playerHelper = [...players]
-            playerHelper.sort(function(a,b){
-                return a.time - b.time;
+        if(playersArray.length > 0){
+            let players = [...playersArray].slice(5);
+            players = players.map((player) => {
+                player.time = time_convert(player.time)
             })
-            setPlayersOrdered(playerHelper);
+            setTopFive(players)
+            console.log(players)
         }
-    } 
-    
+    }, [playersArray])
+
     function time_convert(num){ 
         const minutes = Math.floor(num / 60);  
         const seconds = num % 60;
