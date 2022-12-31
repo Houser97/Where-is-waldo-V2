@@ -48,3 +48,17 @@
     height: 70%;
     font-size: 28px;
 }
+
+@media (max-width: 520px) {
+    .ladderboard-section .ladderboard{
+        height: 350px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 360px) {
+    .ladderboard-section .ladderboard{
+        height: 350px;
+        width: 280px;
+    }
+}
