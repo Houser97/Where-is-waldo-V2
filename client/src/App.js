@@ -18,16 +18,17 @@ function App() {
   const [playersArray, setPlayersArray] = useState([]);
   const [toggleLadderboard, setToggleLadderboard] = useState(false);
 
+  //Estados de Message
   const [toggleMessage, setToggleMessage] = useState(false);
 
-
+  //Estados de flujo de juego
   const [isGameOver, setIsGameOver] = useState(false);
   const [numberOfCharacters, setNumberOfCharacters] = useState(3);
 
+  //Estados de SCOPE
   const [characterHit, setCharacterHit] = useState(null); // Estado que cambia en SCOPE y pasa nombre de personaje a Message.
 
   const [finalTimeUser, setFinalTimeUser] = useState(0);
-  const [username, setUsername] = useState(0);
 
   const[startGame, setStartGame] = useState(false); //Ayudará a iniciar COUNTER al presionar START en CHARACTERS
 
