@@ -16,7 +16,7 @@ function App() {
 
   //Estados de Ladderboard
   const [playersArray, setPlayersArray] = useState([]);
-  const [toggleLadderboard, setToggleLadderboard] = useState(true);
+  const [toggleLadderboard, setToggleLadderboard] = useState(false);
 
   const [toggleMessage, setToggleMessage] = useState(false);
 
@@ -65,7 +65,6 @@ function App() {
 
   return (
     <gameContext.Provider value={gameProvider}>
-      <userContext.Provider value={[username, finalTimeUser]}>
         <div className="App">
           <Header />
           <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
@@ -74,7 +73,6 @@ function App() {
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
           <Board />
         </div>
-        </userContext.Provider>
     </gameContext.Provider>
   );
 }
