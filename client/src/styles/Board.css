@@ -1,10 +1,41 @@
 .image-container{
-width: 100%; 
-position: relative;
+    width: 100%; 
+    position: relative;
 }
 
 .img-project {
-object-fit: cover;
-width: 100%;
-position: relative;
+    object-fit: cover;
+    width: 100%;
+    position: relative;
+}
+
+.credits {
+    position: absolute;
+    bottom: 50px;
+    right: 70px;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 100px;
+    width: 150px;
+    font-family: 'Titan One', cursive;
+    display: flex; flex-flow: column;
+    align-items: center; justify-content: center;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 20px;
+    background-color: rgba(221, 221, 221, 0.8);
+  }
+  
+  a{
+    text-decoration: none;
+    color: rgb(17, 51, 199);
+  }
+
+@media (max-width: 500px) {
+    .credits {
+        height: 70px;
+        width: 120px;
+        font-size: 16px;
+      }
 }
