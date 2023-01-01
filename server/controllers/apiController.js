@@ -9,13 +9,6 @@ exports.get_coordinates = (req, res) => {
     })
 }
 
-exports.get_scores = (req, res) => {
-    User.find({},(err, users) => {
-        if(err) return res.json('Error');
-        return res.json(users)
-    })
-}
-
 exports.set_score = [
     body('username').trim().escape(),
 
