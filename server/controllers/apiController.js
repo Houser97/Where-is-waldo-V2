@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const Coordinate = require('../models/coordinate');
-const {body, validationResult} = require('express-validator')
+const {body} = require('express-validator')
 
 exports.get_coordinates = (req, res) => {
     Coordinate.findOne({character: req.params.character}, (err, character) => {
