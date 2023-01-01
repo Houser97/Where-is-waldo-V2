@@ -24,3 +24,13 @@
 .character-status-name{
     font-size: 30px;
 }
+
+@media (max-width: 720px) {
+    .character-status-image{
+        height: 80px; width: 60px;
+    }    
+
+    .character-status-name{
+        font-size: 25px;
+    }
+}
