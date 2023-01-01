@@ -12,26 +12,3 @@
 
 /* min-width: 1350px; min-height: 550px;
   max-width: 1350px; max-height: 550px; */
-
-.credits {
-  position: absolute;
-  bottom: 50px;
-  right: 70px;
-  border: 2px solid white;
-  border-radius: 10px;
-  height: 100px;
-  width: 150px;
-  font-family: 'Titan One', cursive;
-  display: flex; flex-flow: column;
-  align-items: center; justify-content: center;
-  text-decoration: none;
-  list-style: none;
-  color: black;
-  font-size: 20px;
-  background-color: rgba(221, 221, 221, 0.8);
-}
-
-a{
-  text-decoration: none;
-  color: rgb(17, 51, 199);
-}
