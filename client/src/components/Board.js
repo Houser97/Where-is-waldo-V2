@@ -46,7 +46,7 @@ const Board = () => {
   return (
     <div className='image-container'>
         <img src={image} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
-        <div className='credits'>Photo by: <a href='https://www.reddit.com/r/adventuretime/comments/bvr37b/the_land_of_ooo_adventure_time_by_tom_preston/'>Tom Preston</a></div>
+        <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
         <Scope scopeRef={square} coordsUser = {coordsUser} />
     </div>
   )
