@@ -25,7 +25,7 @@ const Scope = ({scopeRef, coordsUser}) => {
 
     const getCharacter = (e) => {
         const CHARACTER = e.target.textContent;
-        fetch(`http://localhost:5000/api/get_coordinates/${CHARACTER}`)
+        fetch(`/api/get_coordinates/${CHARACTER}`)
         .then(response => response.json())
         .then(data => {
           if(checkIfSelected(data.x, data.y)){

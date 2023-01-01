@@ -13,7 +13,7 @@ const Form = ({isGameOver, time}) => {
         const popUpForm = e.target.parentNode;
         let name = [...e.target];
         let username = name[0].value;
-        fetch('http://localhost:5000/api/register_score', {
+        fetch('/api/register_score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
