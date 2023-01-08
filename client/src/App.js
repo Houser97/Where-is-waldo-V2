@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Characters from './components/Characters';
 import Header from './components/Header';
