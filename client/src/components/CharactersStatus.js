@@ -9,7 +9,7 @@ const CharactersStatus = ({toggleSvg}) => {
             CHARACTERS.map((character, i) => {
                 return(
                     <div key={`character-status-${i}`} className='character-status'>
-                        <img className='character-status-image' src={character.image}></img>
+                        <img alt='character' className='character-status-image' src={character.image}></img>
                         <div className='character-status-name'>{character.name}</div>
                     </div>
                 )
