@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+  --blue-background: rgb(4, 21, 41);
 }
 
 .full-height {
