@@ -2,7 +2,7 @@
 
 header {
     width: 100%;
-    background-color: rgb(4, 21, 41);
+    background-color: var(--blue-background);
     color: white;
     font-size: 40px;
     display: flex;
