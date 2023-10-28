@@ -8,6 +8,7 @@ const Scope = ({scopeRef, coordsUser}) => {
   const setCharacterHit = useContext(gameContext).setCharacterHit
   const setToggleMessage = useContext(gameContext).setToggleMessage
 
+
     const removeCharacterFromList = (liElement) => {
         liElement.target.style.display = 'none'
     }
@@ -48,12 +49,12 @@ const Scope = ({scopeRef, coordsUser}) => {
         <div className='container-list'>
             <ul className='list-characters'>
                 {
-                  CHARACTERS.map((character, i) => {
+                  Object.keys(CHARACTERS).map((character, i) => {
                       return(
                       <li key={`li-${i}`} 
                       data-id = {i}
-                      className={`li-element ${i < CHARACTERS.length -1 ? '':'last-li-element'}`} 
-                      onClick = {getCharacter}>{character.name}</li>
+                      className={`li-element ${i < Object.keys(CHARACTERS).length -1 ? '':'last-li-element'}`} 
+                      onClick = {getCharacter}>{CHARACTERS[character].name}</li>
                       )
                   })
                 }

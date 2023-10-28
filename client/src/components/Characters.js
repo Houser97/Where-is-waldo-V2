@@ -16,11 +16,11 @@ const Characters = () => {
                 <div className='description'>Find the following three characters in the shortest time possible to appear in the list of the fastest.</div>
                 <div className='characters-grid'>
                     {
-                        CHARACTERS.map((character, i) => {
+                        Object.keys(CHARACTERS).map((character, i) => {
                             return(
                                 <div key={i} className='photo-name'>
-                                    <img src={character.image} alt={character.name} className='first-photo character'></img>
-                                    <div className='name'>{character.name}</div>
+                                    <img src={CHARACTERS[character].image} alt={CHARACTERS[character].name} className='first-photo character'></img>
+                                    <div className='name'>{CHARACTERS[character].name}</div>
                                 </div>
                             )
                         })

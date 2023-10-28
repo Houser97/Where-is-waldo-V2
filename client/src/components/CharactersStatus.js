@@ -6,11 +6,11 @@ const CharactersStatus = ({toggleSvg}) => {
   return (
     <div className={`characters-status ${toggleSvg ? 'open-status':''}`}>
         {
-            CHARACTERS.map((character, i) => {
+            Object.keys(CHARACTERS).map((character, i) => {
                 return(
                     <div key={`character-status-${i}`} className='character-status'>
-                        <img alt='character' className='character-status-image' src={character.image}></img>
-                        <div className='character-status-name'>{character.name}</div>
+                        <img alt='character' className='character-status-image' src={CHARACTERS[character].image}></img>
+                        <div className='character-status-name'>{CHARACTERS[character].name}</div>
                     </div>
                 )
             })
