@@ -54,7 +54,7 @@ const Scope = ({scopeRef, coordsUser}) => {
                       <li key={`li-${i}`} 
                       data-id = {i}
                       className={`li-element ${i < Object.keys(CHARACTERS).length -1 ? '':'last-li-element'}`} 
-                      onClick = {getCharacter}>{CHARACTERS[character].name}</li>
+                      onClick = {getCharacter}><img src={CHARACTERS[character].image} className='img__character-item'></img><span>{CHARACTERS[character].name}</span></li>
                       )
                   })
                 }
