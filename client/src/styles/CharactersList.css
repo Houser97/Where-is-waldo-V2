@@ -1,12 +1,7 @@
-
-/* List Characters */
-.container-list{
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
-  
 .list-characters {
+    width: max-content;
+    height: max-content;
+    display: none;
     text-decoration: none;
     list-style: none;
     position: absolute;
