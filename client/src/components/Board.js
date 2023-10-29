@@ -10,14 +10,12 @@ const Board = () => {
   const imgRef = useRef(null);
   const square = useRef(null);
 
-  const centerMagicDiv = (x,y) =>{
+  const centerMagicDiv = (x,y, magicDivRef) =>{
       const width = square.current.offsetWidth/2;
       const height = square.current.offsetHeight/2;
   
-      const magicDiv = document.querySelector(".magic-div");
-  
-      magicDiv.style.top = `${y-height}px`;
-      magicDiv.style.left = `${x-width}px`
+      magicDivRef.style.top = `${y-height}px`
+      magicDivRef.style.left = `${x-width}px`
     }
   
   const setRelativeCoordinates = (x,y) => {
@@ -37,7 +35,7 @@ const Board = () => {
     let x = e.pageX;;
     let y = e.pageY;
     
-    centerMagicDiv(x,y);
+    centerMagicDiv(x,y, magicDiv);
     [x, y] = setRelativeCoordinates(x,y);
 
     setCoordsUser({x, y});
