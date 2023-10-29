@@ -4,7 +4,8 @@ import image from '../assets/Images/BackgroundWaldo.jpg';
 import Scope from './Scope';
 import CharactersList from './CharactersList';
 
-const OFFSET_X = 30;
+const OFFSET_X_CHARACTER_LIST = 40;
+const OFFSET_Y_CHARACTER_LIST = 0;
 
 const Board = () => {
 
@@ -23,8 +24,26 @@ const Board = () => {
   }
 
   const PlaceElement = (x,y, elementRef) =>{
-    elementRef.style.top = `${y}px`
-    elementRef.style.left = `${x+OFFSET_X }px`
+
+    const widthImage = imgRef.current.offsetWidth;
+    const heightImage = imgRef.current.offsetHeight;
+
+    const widthElement = elementRef.offsetWidth;
+    const heightElement = elementRef.offsetHeight;
+
+    const overflowInX = OverflowsInX(widthImage, widthElement,x)
+    const overflowInY = OverflowsInY(heightImage,heightElement,y)
+
+    elementRef.style.top = overflowInY ? `${y-heightElement}px`:`${y+OFFSET_Y_CHARACTER_LIST }px`
+    elementRef.style.left = overflowInX ? `${x-OFFSET_X_CHARACTER_LIST-widthElement}px`:`${x+OFFSET_X_CHARACTER_LIST }px`
+}
+
+const OverflowsInX = (containerWidth, elementWidth, x) => {
+  return x + OFFSET_X_CHARACTER_LIST + elementWidth > containerWidth
+}
+
+const OverflowsInY = (containerHeight, elementHeight, y) => {
+  return y + OFFSET_Y_CHARACTER_LIST + elementHeight > containerHeight
 }
 
   const setRelativeCoordinates = (x,y) => {
@@ -46,6 +65,7 @@ const Board = () => {
 
     let x = e.pageX;;
     let y = e.pageY;
+
     
     centerElement(x,y, magicDiv);
     PlaceElement(x,y, CharactersListRef);
