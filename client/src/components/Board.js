@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react'
 import '../styles/Board.css'
 import image from '../assets/Images/BackgroundWaldo.jpg';
 import Scope from './Scope';
+import CharactersList from './CharactersList';
+
+const OFFSET_X = 30;
 
 const Board = () => {
 
@@ -9,15 +12,21 @@ const Board = () => {
 
   const imgRef = useRef(null);
   const square = useRef(null);
+  const charactersListRef = useRef(null);
 
-  const centerMagicDiv = (x,y, magicDivRef) =>{
-      const width = square.current.offsetWidth/2;
-      const height = square.current.offsetHeight/2;
-  
-      magicDivRef.style.top = `${y-height}px`
-      magicDivRef.style.left = `${x-width}px`
-    }
-  
+  const centerElement = (x,y, elementRef) =>{
+      const widthElement = elementRef.offsetWidth/2;
+      const heightElement = elementRef.offsetHeight/2;
+
+      elementRef.style.top = `${y-heightElement}px`
+      elementRef.style.left = `${x-widthElement}px`
+  }
+
+  const PlaceElement = (x,y, elementRef) =>{
+    elementRef.style.top = `${y}px`
+    elementRef.style.left = `${x+OFFSET_X }px`
+}
+
   const setRelativeCoordinates = (x,y) => {
     const widthImage = imgRef.current.offsetWidth;
     const heightImage = imgRef.current.offsetHeight;
@@ -30,12 +39,16 @@ const Board = () => {
 
   const setMagicDiv = (e) => {
     const magicDiv = square.current;
+    const CharactersListRef = charactersListRef.current
+    
     magicDiv.style.display = "flex";
+    CharactersListRef.style.display = "flex";
 
     let x = e.pageX;;
     let y = e.pageY;
     
-    centerMagicDiv(x,y, magicDiv);
+    centerElement(x,y, magicDiv);
+    PlaceElement(x,y, CharactersListRef);
     [x, y] = setRelativeCoordinates(x,y);
 
     setCoordsUser({x, y});
@@ -45,7 +58,8 @@ const Board = () => {
     <div className='image-container'>
         <img src={image} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
         <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
-        <Scope scopeRef={square} coordsUser = {coordsUser} />
+        <CharactersList CharacterListRef = {charactersListRef} scopeRef={square} coordsUser = {coordsUser} />
+        <Scope scopeRef={square} />
     </div>
   )
 }
