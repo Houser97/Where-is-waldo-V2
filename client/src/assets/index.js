@@ -3,16 +3,13 @@ import Ash from './Images/Ash.png';
 import Tom from './Images/Tom.png';
 
 export const CHARACTERS = {
-    'kratos':{
+    'Kratos':{
         image: Kratos,
-        name: 'Kratos'
     }, 
     'Ash':{
         image: Ash,
-        name: 'Ash'
     }, 
     'Tom':{
         image: Tom,
-        name: 'Tom'
     }
 };
