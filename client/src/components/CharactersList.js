@@ -24,7 +24,7 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
     }
 
     const getCharacter = (e) => {
-        const CHARACTER = e.target.dataset.name;
+        const CHARACTER = e.currentTarget.dataset.name;
         fetch(`/api/get_coordinates/${CHARACTER}`)
         .then(response => response.json())
         .then(data => {
