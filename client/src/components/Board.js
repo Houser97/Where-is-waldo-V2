@@ -3,9 +3,7 @@ import '../styles/Board.css'
 import image from '../assets/Images/BackgroundWaldo.jpg';
 import Scope from './Scope';
 import CharactersList from './CharactersList';
-
-const OFFSET_X_CHARACTER_LIST = 40;
-const OFFSET_Y_CHARACTER_LIST = 0;
+import useWindowSize from '../hooks/windowSizeHook';
 
 const Board = () => {
 
@@ -14,6 +12,8 @@ const Board = () => {
   const imgRef = useRef(null);
   const square = useRef(null);
   const charactersListRef = useRef(null);
+
+  const windowSize = useWindowSize(); 
 
   const centerElement = (x,y, elementRef) =>{
       const widthElement = elementRef.offsetWidth/2;
@@ -25,25 +25,28 @@ const Board = () => {
 
   const PlaceElement = (x,y, elementRef) =>{
 
+    const OFFSET_X_CHARACTER_LIST = windowSize.width > 500 ? 40 : 8;
+    const OFFSET_Y_CHARACTER_LIST = windowSize.width > 500 ? 0 : 8;
+
     const widthImage = imgRef.current.offsetWidth;
     const heightImage = imgRef.current.offsetHeight;
 
     const widthElement = elementRef.offsetWidth;
     const heightElement = elementRef.offsetHeight;
 
-    const overflowInX = OverflowsInX(widthImage, widthElement,x)
-    const overflowInY = OverflowsInY(heightImage,heightElement,y)
+    const overflowInX = OverflowsInX(widthImage, widthElement,x, OFFSET_X_CHARACTER_LIST)
+    const overflowInY = OverflowsInY(heightImage,heightElement,y, OFFSET_Y_CHARACTER_LIST)
 
     elementRef.style.top = overflowInY ? `${y-heightElement}px`:`${y+OFFSET_Y_CHARACTER_LIST }px`
     elementRef.style.left = overflowInX ? `${x-OFFSET_X_CHARACTER_LIST-widthElement}px`:`${x+OFFSET_X_CHARACTER_LIST }px`
 }
 
-const OverflowsInX = (containerWidth, elementWidth, x) => {
-  return x + OFFSET_X_CHARACTER_LIST + elementWidth > containerWidth
+const OverflowsInX = (containerWidth, elementWidth, x, offsetX = 0) => {
+  return x + offsetX + elementWidth > containerWidth
 }
 
-const OverflowsInY = (containerHeight, elementHeight, y) => {
-  return y + OFFSET_Y_CHARACTER_LIST + elementHeight > containerHeight
+const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
+  return y + offsetY + elementHeight > containerHeight
 }
 
   const setRelativeCoordinates = (x,y) => {
