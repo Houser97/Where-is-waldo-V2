@@ -37,7 +37,7 @@ const Board = () => {
     const overflowInX = OverflowsInX(widthImage, widthElement,x, OFFSET_X_CHARACTER_LIST)
     const overflowInY = OverflowsInY(heightImage,heightElement,y, OFFSET_Y_CHARACTER_LIST)
 
-    elementRef.style.top = overflowInY ? `${y-heightElement}px`:`${y+OFFSET_Y_CHARACTER_LIST }px`
+    elementRef.style.top = overflowInY ? `${y-heightElement-OFFSET_Y_CHARACTER_LIST-30}px`:`${y+OFFSET_Y_CHARACTER_LIST }px`
     elementRef.style.left = overflowInX ? `${x-OFFSET_X_CHARACTER_LIST-widthElement}px`:`${x+OFFSET_X_CHARACTER_LIST }px`
 }
 
