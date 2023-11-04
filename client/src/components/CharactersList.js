@@ -9,7 +9,7 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
   
 
     const removeCharacterFromList = (liElement) => {
-        liElement.target.style.display = 'none'
+        liElement.style.display = 'none'
     }
 
     const checkIfSelected = (solutionX, solutionY) => {
@@ -25,11 +25,12 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
 
     const getCharacter = (e) => {
         const CHARACTER = e.currentTarget.dataset.name;
+        const LI_ELEMENT = e.currentTarget
         fetch(`/api/get_coordinates/${CHARACTER}`)
         .then(response => response.json())
         .then(data => {
           if(checkIfSelected(data.x, data.y)){
-            removeCharacterFromList(e);
+            removeCharacterFromList(LI_ELEMENT);
             setCharacterHit(CHARACTER);
           } else {
             setCharacterHit(false); // Se limpia para que Message renderice 'Keep Trying'.
