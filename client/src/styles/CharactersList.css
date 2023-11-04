@@ -17,14 +17,9 @@
     color: white;
 }
   
-.list-characters .middle {
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
-  
-.list-characters .li-element {
+.list-characters li {
+    list-style-position:inside;
     cursor: pointer;
-    border-bottom: 2px solid white;
     padding: 10px 20px;
     font-weight: bold;
     display: flex;
@@ -33,7 +28,13 @@
     gap: 20px;
     transition: transform 200px ease-in-out;
     background-color: var(--blue-background);
+    border-top: 2px solid white;
 }
+
+.list-characters .first-li-element{
+    border: none;
+}
+
   
 .list-characters .li-element:hover {
     background-color: var(--blue-background-hover);
@@ -42,10 +43,6 @@
 .list-characters .li-element span {
     width: 50px;
     text-align: start;
-}
-  
-.list-characters .last-li-element {
-    border-bottom: 0px;
 }
   
 .img__character-item {
