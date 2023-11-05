@@ -46,7 +46,7 @@ const OverflowsInX = (containerWidth, elementWidth, x, offsetX = 0) => {
 }
 
 const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
-  return y + offsetY + elementHeight > containerHeight
+  return y + offsetY + 30 + elementHeight > containerHeight
 }
 
   const setRelativeCoordinates = (x,y) => {
@@ -63,8 +63,8 @@ const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
     const magicDiv = square.current;
     const CharactersListRef = charactersListRef.current
     
-    magicDiv.style.display = "flex";
-    CharactersListRef.style.display = "flex";
+    magicDiv.classList.add('show-characters');
+    CharactersListRef.classList.add('show-characters');
 
     let x = e.pageX;;
     let y = e.pageY;
