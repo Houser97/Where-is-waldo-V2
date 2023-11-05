@@ -1,7 +1,7 @@
 .list-characters {
     width: max-content;
     height: max-content;
-    display: none;
+    display: flex;
     text-decoration: none;
     list-style: none;
     position: absolute;
@@ -11,10 +11,17 @@
     border-radius: 10px;
     overflow: hidden;
     font-size: 15px;
-    display: flex; flex-flow: column;
+    flex-flow: column;
     justify-content: space-evenly;
     background-color: var(--blue-background);
     color: white;
+    z-index: 0;
+    transition: all 250ms ease-in-out 0ms, opacity 250ms ease-in-out 200ms;
+    opacity: 0;
+}
+
+.list-characters.show-characters {
+    opacity: 1;
 }
   
 .list-characters li {
