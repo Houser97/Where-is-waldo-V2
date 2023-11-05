@@ -28,7 +28,6 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
 
     const getCharacter = (e) => {
         const CHARACTER = e.currentTarget.dataset.name;
-        const LI_ELEMENT = e.currentTarget
         fetch(`/api/get_coordinates/${CHARACTER}`)
         .then(response => response.json())
         .then(data => {
@@ -40,7 +39,8 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
             setToggleMessage(true); // Renderiza mensaje con 'Keep Trying'
           }
           const magicDiv = scopeRef.current
-          magicDiv.style.display = 'none'
+          magicDiv.classList.remove('show-characters')
+          CharacterListRef.current.classList.remove('show-characters')
         })
 
       }
@@ -49,7 +49,6 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
     <ul className='list-characters' ref={CharacterListRef}>
         {
         charactersKey.map((character, i) => {
-            console.log(i)
             return(
             <li key={`li-${character}`} 
             data-name = {character}
