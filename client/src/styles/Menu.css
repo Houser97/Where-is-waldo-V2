@@ -1,0 +1,8 @@
+.menu__container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
