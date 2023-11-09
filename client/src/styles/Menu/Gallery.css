@@ -1,0 +1,94 @@
+.gallery__container {
+    width: 800px;
+    height: 500px;
+    background-color: black;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    transition: 0.25s;
+}
+
+.gallery__container .gallery {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    transition: 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0) brightness(1.25);
+}
+
+.gallery__container:hover .gallery {
+    filter: grayscale(1);
+}
+
+.gallery__container .gallery:hover {
+    filter: grayscale(0) brightness(1.25);
+}
+
+.gallery__container:has(.one:hover) {
+    grid-template-columns: 2fr 0.5fr 0.5fr;
+}
+
+.gallery__container:has(.two:hover) {
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+}
+
+.gallery__container:has(.three:hover) {
+    grid-template-columns: 0.5fr 0.5fr 2fr;
+}
+
+.gallery__container .gallery::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    height: calc(100% + 2px);
+    background: linear-gradient(#000, transparent, transparent, transparent,#000);
+}
+
+.gallery__container .gallery:nth-child(even) {
+    transform: translateY(30px);
+}
+
+.gallery__container .gallery:nth-child(even) {
+    transform: translateY(-30px);
+}
+
+.gallery__container .gallery::after {
+    content: attr(data-text);
+    position: absolute;
+    bottom: -100px;
+    background-color: white;
+    color: black;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 5px 10px;
+    white-space: nowrap;
+    transition: 0.5s;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    opacity: 0;
+    -webkit-box-reflect: below 2px linear-gradient(transparent, #0003);
+}
+
+.gallery__container .gallery:hover::after {
+    opacity: 1;
+    bottom: -60px;
+    transition-delay: 0.25s;
+}
+
+
+.gallery__container .one {
+    background-image: url("../../assets/Images/BackgroundWaldo.jpg");
+}
+
+.gallery__container .two {
+    background-image: url("../../assets/Images/BackgroundWaldo.jpg");
+}
+
+.gallery__container .three {
+    background-image: url("../../assets/Images/BackgroundWaldo.jpg");
+}
