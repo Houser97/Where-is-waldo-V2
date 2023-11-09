@@ -10,7 +10,7 @@ const CharactersStatus = ({toggleSvg}) => {
                 return(
                     <div key={`character-status-${i}`} className='character-status'>
                         <img alt='character' className='character-status-image' src={CHARACTERS[character].image}></img>
-                        <div className='character-status-name'>{CHARACTERS[character].name}</div>
+                        <div className='character-status-name'>{character}</div>
                     </div>
                 )
             })
