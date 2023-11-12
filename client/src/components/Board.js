@@ -6,6 +6,8 @@ import useWindowSize from '../hooks/windowSizeHook';
 import { useParams } from 'react-router-dom';
 import { BOARDS } from '../assets';
 
+const HEADER_HEIGHT = 76;
+
 const Board = () => {
 
   const { idGame } = useParams();
@@ -71,8 +73,8 @@ const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
     magicDiv.classList.add('show-characters');
     CharactersListRef.classList.add('show-characters');
 
-    let x = e.pageX;;
-    let y = e.pageY;
+    let x = e.pageX;
+    let y = e.pageY - HEADER_HEIGHT;
 
     
     centerElement(x,y, magicDiv);
