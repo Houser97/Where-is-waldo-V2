@@ -6,6 +6,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 20px;
     transition: 0.25s;
     padding: 0px 100px;
@@ -51,6 +52,7 @@
     background: linear-gradient(#000, transparent, transparent, transparent,#000);
 }
 
+/*
 .gallery__container .gallery:nth-child(even) {
     transform: translateY(30px);
 }
@@ -58,6 +60,7 @@
 .gallery__container .gallery:nth-child(even) {
     transform: translateY(-30px);
 }
+*/
 
 .gallery__container .gallery::after {
     content: attr(data-text);
@@ -78,7 +81,7 @@
 
 .gallery__container .gallery:hover::after {
     opacity: 1;
-    bottom: -60px;
+    bottom: -30px;
     transition-delay: 0.25s;
 }
 
