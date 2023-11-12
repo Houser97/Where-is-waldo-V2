@@ -1,24 +1,17 @@
-import Kratos from './Images/Kratos.png';
-import Ash from './Images/Ash.png';
-import Tom from './Images/Tom.png';
-import Cyberpunk from './Images/BackgroundWaldo.jpg'
-import RobotCity from './Images/RobotCity.jpg'
-import Universe113 from './Images/Universe113.jpg'
-
 export const CHARACTERS = {
     'Kratos':{
-        image: Kratos,
+        image: 'https://res.cloudinary.com/dluwqcce9/image/upload/v1699807424/Where%20is%20Waldo/Kratos_fpssgr.png',
     }, 
     'Ash':{
-        image: Ash,
+        image: 'https://res.cloudinary.com/dluwqcce9/image/upload/v1699807413/Where%20is%20Waldo/Ash_mryet9.png',
     }, 
     'Tom':{
-        image: Tom,
+        image: 'https://res.cloudinary.com/dluwqcce9/image/upload/v1699807430/Where%20is%20Waldo/Tom_aakdwn.png',
     }
 };
 
 export const BOARDS = {
-    'Cyberpunk-City': Cyberpunk,
-    'Robot-City':RobotCity,
-    'Universe-113':Universe113
+    'Cyberpunk-City': "https://res.cloudinary.com/dluwqcce9/image/upload/v1699807419/Where%20is%20Waldo/CyberpunkCity_yznpu4.jpg",
+    'Robot-City':"https://res.cloudinary.com/dluwqcce9/image/upload/v1699807427/Where%20is%20Waldo/RobotCity_roytru.jpg",
+    'Universe-113': "https://res.cloudinary.com/dluwqcce9/image/upload/v1699807432/Where%20is%20Waldo/Universe113_zclaz4.jpg"
 }
