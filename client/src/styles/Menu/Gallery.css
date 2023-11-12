@@ -1,7 +1,7 @@
 .gallery__container {
     max-width: 1200px;
     width: 100%;
-    height: 500px;
+    height: calc(100vh - 180px);
     background-color: black;
     position: relative;
     display: grid;
@@ -87,13 +87,29 @@
 
 
 .gallery__container .one {
-    background-image: url("../../assets/Images/BackgroundWaldo.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807419/Where%20is%20Waldo/CyberpunkCity_yznpu4.jpg");
 }
 
 .gallery__container .two {
-    background-image: url("../../assets/Images/RobotCity.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807427/Where%20is%20Waldo/RobotCity_roytru.jpg");
 }
 
 .gallery__container .three {
-    background-image: url("../../assets/Images/Universe113.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807432/Where%20is%20Waldo/Universe113_zclaz4.jpg");
+}
+
+@media (min-height: 1000px) {
+    .gallery__container {
+        max-width: 1200px;
+        width: 100%;
+        height: calc(100vh - 400px);
+        background-color: black;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+        transition: 0.25s;
+        padding: 0px 100px;
+    }
 }
