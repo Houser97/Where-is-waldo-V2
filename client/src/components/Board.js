@@ -1,11 +1,16 @@
 import React, { useRef, useState } from 'react'
 import '../styles/Board.css'
-import image from '../assets/Images/BackgroundWaldo.jpg';
 import Scope from './Scope';
 import CharactersList from './CharactersList';
 import useWindowSize from '../hooks/windowSizeHook';
+import { useParams } from 'react-router-dom';
+import { BOARDS } from '../assets';
 
 const Board = () => {
+
+  const { idGame } = useParams();
+
+  const SelectedGame = BOARDS[idGame]
 
   const [coordsUser, setCoordsUser] = useState({});
 
@@ -74,12 +79,14 @@ const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
     PlaceElement(x,y, CharactersListRef);
     [x, y] = setRelativeCoordinates(x,y);
 
+    console.log(x,y)
+
     setCoordsUser({x, y});
   } 
 
   return (
     <div className='image-container'>
-        <img src={image} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
+        <img src={SelectedGame} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
         <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
         <CharactersList CharacterListRef = {charactersListRef} scopeRef={square} coordsUser = {coordsUser} />
         <Scope scopeRef={square} />
