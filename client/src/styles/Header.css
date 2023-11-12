@@ -11,9 +11,10 @@ header {
     padding: 15px 60px;
     font-family: 'Titan One', cursive;
     /*height: 140px; Se especifica altura para tener el valor a restar a e.pageY y colocar Magic Div*/
-    position: fixed;
+    position: sticky;
     top: 0px;
     z-index: 10;
+    overflow: hidden;
 }
 
 .open-close-characters{
