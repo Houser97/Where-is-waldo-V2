@@ -3,9 +3,11 @@ import { CHARACTERS } from '../assets'
 import { gameContext } from '../App';
 import '../styles/CharactersList.css'
 
-const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
+const CharactersList = ({coordsUser, scopeRef, CharacterListRef, SelectedBoard}) => {
 
-    const [charactersKey, setCharactersKey] = useState(Object.keys(CHARACTERS))
+    const CHARACTERS_BOARD = CHARACTERS[SelectedBoard]
+
+    const [charactersKey, setCharactersKey] = useState(Object.keys(CHARACTERS_BOARD))
 
     const setCharacterHit = useContext(gameContext).setCharacterHit
     const setToggleMessage = useContext(gameContext).setToggleMessage
@@ -53,7 +55,7 @@ const CharactersList = ({coordsUser, scopeRef, CharacterListRef}) => {
             <li key={`li-${character}`} 
             data-name = {character}
             className={`li-element ${i === 0 ? 'first-li-element':'li-element-borders'}`} 
-            onClick = {getCharacter}><img src={CHARACTERS[character].image} className='img__character-item'></img><span>{character}</span></li>
+            onClick = {getCharacter}><img src={CHARACTERS_BOARD[character].image} className='img__character-item'></img><span>{character}</span></li>
             )
         })
         }
