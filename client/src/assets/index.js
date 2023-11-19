@@ -11,7 +11,7 @@ export const CHARACTERS = {
         }
     },
     'Robot-City': {
-        'Depredator':{
+        'Predator':{
             image: 'https://res.cloudinary.com/dluwqcce9/image/upload/v1700413059/imgbin_predator-png_1_1_p05z2n.png',
         }, 
         'Mojo Jojo':{
