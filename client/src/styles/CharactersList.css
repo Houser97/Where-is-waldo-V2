@@ -5,7 +5,6 @@
     text-decoration: none;
     list-style: none;
     position: absolute;
-    background-color: white;
     padding: 0px;
     border: 2px solid white;
     border-radius: 10px;
@@ -32,9 +31,7 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 20px;
-    transition: transform 200px ease-in-out;
     background-color: var(--blue-background);
     border-top: 2px solid white;
 }
@@ -49,11 +46,10 @@
 }
   
 .list-characters .li-element span {
-    width: 50px;
     text-align: start;
 }
   
 .img__character-item {
-    height: 40px;
-    width: auto;
+    height: auto;
+    width: 43px;
 }
