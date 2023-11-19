@@ -3,16 +3,13 @@ import '../styles/Board.css'
 import Scope from './Scope';
 import CharactersList from './CharactersList';
 import useWindowSize from '../hooks/windowSizeHook';
-import { useParams } from 'react-router-dom';
 import { BOARDS } from '../assets';
 
 const HEADER_HEIGHT = 76;
 
-const Board = () => {
+const Board = ({SelectedBoard}) => {
 
-  const { idGame } = useParams();
-
-  const SelectedGame = BOARDS[idGame]
+  const SelectedGame = BOARDS[SelectedBoard]
 
   const [coordsUser, setCoordsUser] = useState({});
 
@@ -90,8 +87,8 @@ const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
     <div className='image-container'>
         <img src={SelectedGame} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
         <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
-        <CharactersList CharacterListRef = {charactersListRef} scopeRef={square} coordsUser = {coordsUser} />
-        <Scope scopeRef={square} />
+        <CharactersList CharacterListRef = {charactersListRef} scopeRef={square} coordsUser = {coordsUser} SelectedGame = {SelectedGame} SelectedBoard = {SelectedBoard}/>
+        <Scope scopeRef={square}/>
     </div>
   )
 }
