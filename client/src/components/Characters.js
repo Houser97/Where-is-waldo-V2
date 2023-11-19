@@ -2,16 +2,13 @@ import React, { useContext } from 'react'
 import '../styles/Characters.css'
 import { CHARACTERS } from '../assets'
 import { gameContext } from '../App'
-import { useParams } from 'react-router-dom'
 
-const Characters = () => {
+const Characters = ({SelectedBoard}) => {
 
     const startGame = useContext(gameContext).startGame;
     const setStartGame = useContext(gameContext).setStartGame;
 
-    const { idGame } = useParams();
-
-    const CHARACTERS_BOARD = CHARACTERS[idGame]
+    const CHARACTERS_BOARD = CHARACTERS[SelectedBoard]
 
   return (
     <div className={`characters-background ${startGame ? 'hide':''}`}>
