@@ -6,6 +6,7 @@ import Message from './components/Message';
 import Form from './components/Form';
 import Board from './components/Board';
 import Ladderboard from './components/Ladderboard';
+import { useParams } from 'react-router-dom';
 
 export const gameContext = createContext();
 export const userContext = createContext();
@@ -13,6 +14,8 @@ export const userContext = createContext();
 function App() {
 
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
+
+  const { idGame } = useParams();
 
   //Estados de Ladderboard
   const [playersArray, setPlayersArray] = useState([]);
@@ -69,9 +72,9 @@ function App() {
           <Header />
           <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
           <Ladderboard toggleLadderboard={toggleLadderboard} playersArray = {playersArray} />
-          <Characters />
+          <Characters SelectedBoard={idGame} />
           <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
-          <Board />
+          <Board SelectedBoard={idGame}/>
         </div>
     </gameContext.Provider>
   );
