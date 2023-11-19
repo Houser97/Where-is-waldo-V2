@@ -87,15 +87,15 @@
 
 
 .gallery__container .one {
-    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807419/Where%20is%20Waldo/CyberpunkCity_yznpu4.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1700413484/CyberpunkCity_dzadne.jpg");
 }
 
 .gallery__container .two {
-    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807427/Where%20is%20Waldo/RobotCity_roytru.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1700413483/RobotCity_jd1huq.jpg");
 }
 
 .gallery__container .three {
-    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1699807432/Where%20is%20Waldo/Universe113_zclaz4.jpg");
+    background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1700413483/Universe113_pkl7sj.jpg");
 }
 
 @media (min-height: 1000px) {
