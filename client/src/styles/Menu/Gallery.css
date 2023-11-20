@@ -2,7 +2,7 @@
     max-width: 1800px;
     width: 100%;
     height: calc(100vh - 180px);
-    background-color: black;
+    background-color: var(--menu-background);
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -49,7 +49,7 @@
     top: -1px;
     width: 100%;
     height: calc(100% + 2px);
-    background: linear-gradient(#000, transparent, transparent, transparent,#000);
+    background: linear-gradient(var(--menu-background), transparent, transparent, transparent,var(--menu-background));
 }
 
 /*
@@ -98,8 +98,28 @@
     background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1700413483/Universe113_pkl7sj.jpg");
 }
 
+.gallery__image-loader { 
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+    width: 0px;
+    height: 0px;
+}
+
+.loader__container {
+    width: 100%;
+    height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (min-height: 1000px) {
     .gallery__container {
+        height: calc(100vh - 400px);
+    }
+
+    .loader__container {
         height: calc(100vh - 400px);
     }
 }
