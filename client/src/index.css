@@ -4,6 +4,7 @@
 
 :root {
   color-scheme: light only;
+  --menu-background: rgb(0, 0, 0);
 }
 
 body {
