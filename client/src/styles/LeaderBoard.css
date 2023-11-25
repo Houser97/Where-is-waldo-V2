@@ -1,0 +1,11 @@
+.leaderboard__container {
+    width: 100%;
+    background-color: #151729;
+    min-height: 100vh;
+
+    --first-place-bg: #252a40;
+    --second-third-bg: #1e2237;
+    --winner-gold: #e4a100;
+    --second-blue: #6cc5e7;
+    --third-green: #44e38a;
+}
