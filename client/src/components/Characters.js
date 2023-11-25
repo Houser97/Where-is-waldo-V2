@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import '../styles/Characters.css'
 import { CHARACTERS } from '../assets'
 import { gameContext } from '../App'
+import { useImageIsLoaded } from './hooks/useImageIsLoaded'
+import Loader from './Loader'
 
 const Characters = ({SelectedBoard}) => {
 
@@ -9,6 +11,26 @@ const Characters = ({SelectedBoard}) => {
     const setStartGame = useContext(gameContext).setStartGame;
 
     const CHARACTERS_BOARD = CHARACTERS[SelectedBoard]
+
+    const [ isImageLoaded1, handleImageLoad1 ] = useImageIsLoaded();
+    const [ isImageLoaded2, handleImageLoad2 ] = useImageIsLoaded();
+    const [ isImageLoaded3, handleImageLoad3 ] = useImageIsLoaded();
+
+    const handleImageLoadArray = [
+        {
+            handleImageLoad: handleImageLoad1,
+            isImageLoaded: isImageLoaded1
+        }, 
+        {
+            handleImageLoad: handleImageLoad2,
+            isImageLoaded: isImageLoaded2
+        }, 
+        {
+            handleImageLoad: handleImageLoad3,
+            isImageLoaded: isImageLoaded3
+        }];
+    
+
 
   return (
     <div className={`characters-background ${startGame ? 'hide':''}`}>
@@ -20,8 +42,9 @@ const Characters = ({SelectedBoard}) => {
                     {
                         Object.keys(CHARACTERS_BOARD).map((character, i) => {
                             return(
-                                <div key={i} className='photo-name'>
-                                    <img src={CHARACTERS_BOARD[character].image} alt={CHARACTERS_BOARD[character].name} className='first-photo character'></img>
+                                <div key={character} className='photo-name'>
+                                    {!isImageLoaded1 && <Loader isWhiteBg = {true} />}
+                                    <img src={CHARACTERS_BOARD[character].image} alt={CHARACTERS_BOARD[character].name} className={`${handleImageLoadArray[i]['isImageLoaded'] ? 'first-photo character' : 'hide-image'}`} onLoad={() => handleImageLoadArray[i]['handleImageLoad']()}></img>
                                     <div className='name'>{character}</div>
                                 </div>
                             )
