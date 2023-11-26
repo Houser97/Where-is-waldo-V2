@@ -1,0 +1,55 @@
+.winnerCard__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--second-third-bg);
+    width: 150px;
+    height: 180px;
+    padding-top: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: relative;
+
+    --place-radius: 30px;
+}
+
+.image__container {
+    display: inherit;
+    flex-direction: inherit;
+    position: absolute;
+    top: -60px;
+}
+
+.image__container img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid var(--winner-gold);
+}
+
+.winner__place {
+    position: absolute;
+    color: white;
+    background-color: var(--winner-gold);
+    border-radius: 50%;
+    width: var(--place-radius);
+    height: var(--place-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.winner__data {
+    display: inherit;
+    flex-direction: inherit;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    gap: 10px;
+}
