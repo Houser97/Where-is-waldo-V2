@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from './components/Menu';
-import Board from './components/Board';
+import LeaderBoard from './components/LeaderBoard';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/:idGame',
     element: <App />
+  },
+  {
+    path: '/leaderboard/:idGame',
+    element: <LeaderBoard />
   }
 ])
 
