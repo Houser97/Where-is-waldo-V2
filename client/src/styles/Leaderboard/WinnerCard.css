@@ -3,15 +3,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--second-third-bg);
-    width: 150px;
-    height: 180px;
-    padding-top: 20px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     position: relative;
 
     --place-radius: 30px;
+}
+
+.winnerCard__container.first_place {
+    width: 150px;
+    height: 180px;
+    padding-top: 20px;
+    background-color: var(--first-place-bg);
+    grid-column: 2/3;
+}
+
+.winnerCard__container.second_place,
+.winnerCard__container.third_place{
+    width: 150px;
+    height: 140px;
+    padding-top: 35px;
+    grid-row: 1/2;
+    background-color: var(--second-third-bg);
+}
+
+.winnerCard__container.third_place {
+    grid-column: 3/4;
+}
+
+.winnerCard__container.second_place {
+    grid-column: 1/2;
 }
 
 .image__container {
@@ -25,7 +46,31 @@
     width: 100px;
     height: auto;
     border-radius: 50%;
-    border: 5px solid var(--winner-gold);
+    border: 5px solid;
+}
+
+.first_place img {
+    border-color:  var(--winner-gold);
+}
+
+.second_place img {
+    border-color:  var(--second-blue);
+}
+
+.third_place img {
+    border-color:  var(--third-green);
+}
+
+.first_place .winner__place {
+    background-color:  var(--winner-gold);
+}
+
+.second_place .winner__place {
+    background-color:  var(--second-blue);
+}
+
+.third_place .winner__place {
+    background-color:  var(--third-green);
 }
 
 .winner__place {
