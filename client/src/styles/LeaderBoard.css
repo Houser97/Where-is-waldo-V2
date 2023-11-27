@@ -12,3 +12,11 @@
     --second-blue: #6cc5e7;
     --third-green: #44e38a;
 }
+
+.winners__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 150px));
+    grid-template-rows: 1fr;
+    gap: 0px;
+    align-items: flex-end;
+}
