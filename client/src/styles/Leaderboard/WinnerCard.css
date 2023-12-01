@@ -6,12 +6,11 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     position: relative;
-
+    width: 100%; /*Width is set in LeaderBoard grid*/
     --place-radius: 30px;
 }
 
 .winnerCard__container.first_place {
-    width: 150px;
     height: 180px;
     padding-top: 20px;
     background-color: var(--first-place-bg);
@@ -20,7 +19,6 @@
 
 .winnerCard__container.second_place,
 .winnerCard__container.third_place{
-    width: 150px;
     height: 140px;
     padding-top: 35px;
     grid-row: 1/2;
