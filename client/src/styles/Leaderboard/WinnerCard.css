@@ -96,3 +96,29 @@
     text-align: center;
     gap: 10px;
 }
+
+@media (max-width: 450px) {
+    .winnerCard__container.first_place {
+        height: 140px;
+    }
+    
+    .winnerCard__container.second_place,
+    .winnerCard__container.third_place{
+        height: 100px;
+        padding-bottom: 20px;
+    }
+
+    .winnerCard__container.second_place .image__container,
+    .winnerCard__container.third_place .image__container{
+        top: -70px;
+    }
+
+    .image__container {
+        transform: scale(0.8);
+    }
+
+    .winner__data {
+        gap: 0px;
+        font-size: 18px;
+    }
+}
