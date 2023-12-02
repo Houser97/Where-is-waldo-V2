@@ -7,6 +7,8 @@
     border-top-right-radius: 30px;
     position: relative;
     width: 100%; /*Width is set in LeaderBoard grid*/
+    padding-left: 10px;
+    padding-right: 10px;
     --place-radius: 30px;
 }
 
@@ -95,6 +97,13 @@
     font-size: 20px;
     text-align: center;
     gap: 10px;
+    width: 100%;
+}
+
+.winner__name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 450px) {
@@ -119,6 +128,6 @@
 
     .winner__data {
         gap: 0px;
-        font-size: 18px;
+        font-size: 17px;
     }
 }
