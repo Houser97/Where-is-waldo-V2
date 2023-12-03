@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    overflow-x: hidden;
 
     --first-place-bg: #252a40;
     --second-third-bg: #1e2237;
