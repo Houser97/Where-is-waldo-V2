@@ -24,3 +24,13 @@ exports.set_score = [
         })
     }
 ]
+
+exports.get_scores = (req, res) => {
+
+    const game = req.params.game
+
+    User.find({game: {$eq: game}}).sort({time: 1}).exec((err, users) => {
+        if(err) return res.json(false);
+        return res.json(users)
+    })
+}
