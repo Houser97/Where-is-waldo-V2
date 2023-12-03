@@ -43,7 +43,7 @@ const Characters = ({SelectedBoard}) => {
                         Object.keys(CHARACTERS_BOARD).map((character, i) => {
                             return(
                                 <div key={character} className='photo-name'>
-                                    {!isImageLoaded1 && <Loader isWhiteBg = {true} />}
+                                    {!handleImageLoadArray[i]['isImageLoaded'] && <Loader isWhiteBg = {true} />}
                                     <img src={CHARACTERS_BOARD[character].image} alt={CHARACTERS_BOARD[character].name} className={`${handleImageLoadArray[i]['isImageLoaded'] ? 'first-photo character' : 'hide-image'}`} onLoad={() => handleImageLoadArray[i]['handleImageLoad']()}></img>
                                     <div className='name'>{character}</div>
                                 </div>
