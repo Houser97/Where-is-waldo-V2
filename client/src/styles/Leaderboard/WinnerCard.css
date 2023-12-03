@@ -96,7 +96,6 @@
     color: white;
     font-size: 20px;
     text-align: center;
-    gap: 10px;
     width: 100%;
 }
 
@@ -127,7 +126,6 @@
     }
 
     .winner__data {
-        gap: 0px;
         font-size: 17px;
     }
 }
