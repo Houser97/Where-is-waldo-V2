@@ -6,4 +6,6 @@ router.get('/get_coordinates/:character', apiController.get_coordinates);
 
 router.post('/register_score', apiController.set_score);
 
+router.get('/get_scores/:game', apiController.get_scores);
+
 module.exports = router;
