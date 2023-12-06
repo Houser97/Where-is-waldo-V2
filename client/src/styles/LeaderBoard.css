@@ -34,6 +34,5 @@
     max-width: 800px;
     padding: 30px;
     padding-top: 10px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-radius: 20px;
 }
