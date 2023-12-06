@@ -1,18 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import '../styles/LeaderBoard.css'
 import PlayerCard from './Leaderboard/PlayerCard'
 import WinnerCard from './Leaderboard/WinnerCard'
+import Loader from './Loader'
 
 const LeaderBoard = () => {
+
+  const [scores, setScores] = useState([]);
+
+  const { idGame } = useParams();
+
+  useEffect(() => {
+    fetch(`/api/get_scores/${idGame}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(scores => {
+      if(!scores) return;
+      setScores(scores)
+    })
+  }, [])
+
+  if(!scores.length) return (
+    <div className='leaderboard__container'>
+      <Loader />  
+    </div>
+  )
+
+  const winners = scores.slice(0,3);
+  const players = scores.slice(3)
+  
   return (
     <div className='leaderboard__container'>
       <div className='winners__container'>
-        <WinnerCard profileImg={'https://res.cloudinary.com/dluwqcce9/image/upload/v1697390686/InTouch/irlci3ocrmxri0dlxdz0.jpg'} username={'House'} time={'02:03'} winnerPosition={1}/>
-        <WinnerCard profileImg={'https://res.cloudinary.com/dluwqcce9/image/upload/v1697735636/InTouch/lrlmwnzacirgh3sdblyo.jpg'} username={'Bethoveen'} time={'03:12'} winnerPosition={2}/>
-        <WinnerCard profileImg={'https://res.cloudinary.com/dluwqcce9/image/upload/v1697392849/InTouch/lzxr2waxbhvewptjbegy.jpg'} username={'Lucky'} time={'04:43'} winnerPosition={3}/>
+        {winners.map(({time, username, image}, index) => (
+          <WinnerCard
+            key={index}
+            profileImg={image}
+            username={username}
+            time={time}
+            winnerPosition={index + 1}
+          />
+        ))}
       </div>
       <div className='players__container'>
-
+          {players.map(({username, time, image}, index) => (
+            <PlayerCard 
+              key={index + 3}
+              username={username}
+              time={time}
+              profileImg={image}
+              position={index + 4}
+            />
+          ))}
       </div>
     </div>
   )
