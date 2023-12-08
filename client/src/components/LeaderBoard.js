@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../styles/LeaderBoard.css'
+import LoaderLeaderBoard from './Leaderboard/LoaderLeaderBoard'
 import PlayerCard from './Leaderboard/PlayerCard'
 import WinnerCard from './Leaderboard/WinnerCard'
-import Loader from './Loader'
 
 const LeaderBoard = () => {
 
@@ -27,7 +27,7 @@ const LeaderBoard = () => {
 
   if (!scores.length) return (
     <div className='leaderboard__container'>
-      <Loader />
+      <LoaderLeaderBoard />
     </div>
   )
 
