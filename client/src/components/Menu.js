@@ -7,7 +7,10 @@ const Menu = () => {
   return (
     <div className='menu__container'>
       <HeaderMenu>Where is...?</HeaderMenu>
-      <Gallery />
+      <div className='games__container'>
+        <div className='games__text'>Games</div>
+        <Gallery />
+      </div>
     </div>
   )
 }
