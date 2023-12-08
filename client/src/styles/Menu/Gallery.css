@@ -49,7 +49,7 @@
     top: -1px;
     width: 100%;
     height: calc(100% + 2px);
-    background: linear-gradient(var(--menu-background), transparent, transparent, transparent,var(--menu-background));
+    background: linear-gradient(var(--menu-background), transparent, transparent, transparent, var(--menu-background));
 }
 
 /*
@@ -98,7 +98,7 @@
     background-image: url("https://res.cloudinary.com/dluwqcce9/image/upload/v1700413483/Universe113_pkl7sj.jpg");
 }
 
-.gallery__image-loader { 
+.gallery__image-loader {
     position: absolute;
     opacity: 0;
     z-index: 0;
@@ -116,11 +116,11 @@
 
 @media (min-height: 1000px) {
     .gallery__container {
-        height: calc(100vh - 400px);
+        height: calc(100vh - 300px);
     }
 
     .loader__container {
-        height: calc(100vh - 400px);
+        height: calc(100vh - 300px);
     }
 }
 
@@ -128,11 +128,11 @@
     .gallery__container:has(.one:hover) {
         grid-template-columns: 1r 0.5fr 0.5fr;
     }
-    
+
     .gallery__container:has(.two:hover) {
         grid-template-columns: 0.5fr 1fr 0.5fr;
     }
-    
+
     .gallery__container:has(.three:hover) {
         grid-template-columns: 0.5fr 0.5fr 1fr;
     }
