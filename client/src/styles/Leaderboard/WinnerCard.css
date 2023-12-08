@@ -6,13 +6,15 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     position: relative;
-    width: 100%; /*Width is set in LeaderBoard grid*/
+    width: 100%;
+    /*Width is set in LeaderBoard grid*/
     padding-left: 10px;
     padding-right: 10px;
     transform: translateY(40%);
     transition: transform 1000ms ease-in-out,
-    opacity 1000ms ease-in-out;
+        opacity 1000ms ease-in-out;
     opacity: 0;
+    margin-top: 80px;
 
     --place-radius: 30px;
 }
@@ -26,7 +28,7 @@
 }
 
 .second_place,
-.third_place{
+.third_place {
     height: 140px;
     padding-top: 35px;
     grid-row: 1/2;
@@ -63,27 +65,27 @@
 }
 
 .first_place img {
-    border-color:  var(--winner-gold);
+    border-color: var(--winner-gold);
 }
 
 .second_place img {
-    border-color:  var(--second-blue);
+    border-color: var(--second-blue);
 }
 
 .third_place img {
-    border-color:  var(--third-green);
+    border-color: var(--third-green);
 }
 
 .first_place .winner__place {
-    background-color:  var(--winner-gold);
+    background-color: var(--winner-gold);
 }
 
 .second_place .winner__place {
-    background-color:  var(--second-blue);
+    background-color: var(--second-blue);
 }
 
 .third_place .winner__place {
-    background-color:  var(--third-green);
+    background-color: var(--third-green);
 }
 
 .winner__place {
@@ -122,15 +124,15 @@
     .winnerCard__container.first_place {
         height: 140px;
     }
-    
+
     .winnerCard__container.second_place,
-    .winnerCard__container.third_place{
+    .winnerCard__container.third_place {
         height: 100px;
         padding-bottom: 20px;
     }
 
     .winnerCard__container.second_place .image__container,
-    .winnerCard__container.third_place .image__container{
+    .winnerCard__container.third_place .image__container {
         top: -70px;
     }
 
