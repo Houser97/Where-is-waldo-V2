@@ -13,18 +13,32 @@ const Form = ({ isGameOver, time }) => {
     const [previewSource, setPreviewSource] = useState('https://res.cloudinary.com/dluwqcce9/image/upload/v1697390686/InTouch/irlci3ocrmxri0dlxdz0.jpg');
     const [previewSourceCrop, setPreviewSourceCrop] = useState('');
     const [selectedFile, setSelectedFile] = useState(null)
+    const [username, setUsername] = useState('')
 
-    const saveUser = (e) => {
+    const handleUser = async (e) => {
         e.preventDefault();
-        const popUpForm = e.target.parentNode;
-        let name = [...e.target];
-        let username = name[0].value;
+        if (!selectedFile) {
+            saveUser('', username);
+            return;
+        };
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            saveUser(reader.result, username);
+        }
+        reader.onerror = () => {
+            console.log('Error')
+        }
+    };
+
+    const saveUser = (image, username) => {
+        if (!username.length) return;
         fetch('/api/register_score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, time })
+            body: JSON.stringify({ username, time, image })
         }).then(response => response.json())
             .then(players => {
                 setPlayersArray(players);
@@ -58,7 +72,7 @@ const Form = ({ isGameOver, time }) => {
     return (
         <div className={`popup-form ${isGameOver ? 'stopGame' : ''}`}>
             <div className='win'>You win!</div>
-            <form className='form' onSubmit={saveUser}>
+            <form className='form' onSubmit={handleUser}>
                 <div className='form-title'>Enter a name to save your time</div>
                 <label className="custom-file-upload" htmlFor="file">
                     <div className="icon">
@@ -87,7 +101,7 @@ const Form = ({ isGameOver, time }) => {
                 />
                 <div className='input-section'>
                     <label htmlFor='name'>Username</label>
-                    <input id='name' name='name' maxLength={10} required></input>
+                    <input id='name' name='name' maxLength={10} onChange={(e) => setUsername(e.target.value)} required></input>
                 </div>
                 <button className='submit' onClick={openLadderboard}>Submit</button>
             </form>
