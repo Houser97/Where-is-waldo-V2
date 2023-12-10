@@ -4,13 +4,13 @@ import '../styles/Form.css';
 import CropEasy from './crop/CropEasy';
 
 
-const Form = ({ isGameOver, time }) => {
+const Form = ({ isGameOver, time, game }) => {
 
     const setPlayersArray = useContext(gameContext).setPlayersArray;
     const setToggleLadderboard = useContext(gameContext).setToggleLadderboard;
 
     const [fileInputState, setFileInputState] = useState('');
-    const [previewSource, setPreviewSource] = useState('https://res.cloudinary.com/dluwqcce9/image/upload/v1697390686/InTouch/irlci3ocrmxri0dlxdz0.jpg');
+    const [previewSource, setPreviewSource] = useState('https://res.cloudinary.com/dluwqcce9/image/upload/v1694961227/InTouch/qqaarw68ruwwluvcphkh.jpg');
     const [previewSourceCrop, setPreviewSourceCrop] = useState('');
     const [selectedFile, setSelectedFile] = useState(null)
     const [username, setUsername] = useState('')
@@ -38,12 +38,10 @@ const Form = ({ isGameOver, time }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, time, image })
+            body: JSON.stringify({ username, time, image, game })
         }).then(response => response.json())
-            .then(players => {
-                setPlayersArray(players);
-                setToggleLadderboard(true);
-                popUpForm.style.display = "none";
+            .then(result => {
+                console.log(result)
             })
     }
 
