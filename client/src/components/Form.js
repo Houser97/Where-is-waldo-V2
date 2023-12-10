@@ -1,12 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { gameContext } from '../App';
 import '../styles/Form.css';
+import CropEasy from './crop/CropEasy';
 
 
-const Form = ({isGameOver, time}) => {
+const Form = ({ isGameOver, time }) => {
 
     const setPlayersArray = useContext(gameContext).setPlayersArray;
     const setToggleLadderboard = useContext(gameContext).setToggleLadderboard;
+
+    const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState('https://res.cloudinary.com/dluwqcce9/image/upload/v1697390686/InTouch/irlci3ocrmxri0dlxdz0.jpg');
+    const [previewSourceCrop, setPreviewSourceCrop] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null)
 
     const saveUser = (e) => {
         e.preventDefault();
@@ -17,33 +23,73 @@ const Form = ({isGameOver, time}) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            }, 
-            body: JSON.stringify({username, time})
+            },
+            body: JSON.stringify({ username, time })
         }).then(response => response.json())
-        .then(players => {
-            setPlayersArray(players);
-            setToggleLadderboard(true);
-            popUpForm.style.display = "none";
-        })
-      }
+            .then(players => {
+                setPlayersArray(players);
+                setToggleLadderboard(true);
+                popUpForm.style.display = "none";
+            })
+    }
 
     const openLadderboard = () => {
-        const ladder =document.querySelector(".ladderboard-section");
+        const ladder = document.querySelector(".ladderboard-section");
         ladder.style.display = "flex";
     }
 
-    return(
-        <div className={`popup-form ${isGameOver ? 'stopGame':''}`}>
+    const handleFileInputChange = (e) => {
+        const target = e.target;
+        const file = target.files && target.files[0]
+        if (!file) return;
+        previewFile(file);
+        setSelectedFile(file);
+        setFileInputState(target.value);
+    }
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSourceCrop(reader.result)
+        }
+    }
+
+    return (
+        <div className={`popup-form ${isGameOver ? 'stopGame' : ''}`}>
             <div className='win'>You win!</div>
             <form className='form' onSubmit={saveUser}>
                 <div className='form-title'>Enter a name to save your time</div>
+                <label className="custom-file-upload" htmlFor="file">
+                    <div className="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>camera</title><path d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z" /></svg>
+                    </div>
+                    <div className="text">
+                        <span>Click to upload image</span>
+                    </div>
+                    <input
+                        type="file"
+                        id='file'
+                        name='image'
+                        accept="image/png, image/gif, image/jpeg, image/jpg"
+                        onChange={(e) => handleFileInputChange(e)}
+                        value={fileInputState}
+                        className='input__image' />
+                    {previewSource && (
+                        <img className='preview__update-user' src={previewSource} alt="preview" />
+                    )}
+                </label>
+                <CropEasy
+                    photoURL={previewSourceCrop}
+                    setPreviewSourceParent={setPreviewSource}
+                    setPhotoURL={setPreviewSourceCrop}
+                    setFile={setSelectedFile}
+                />
                 <div className='input-section'>
                     <label htmlFor='name'>Username</label>
                     <input id='name' name='name' maxLength={10} required></input>
                 </div>
-                <div className='button-section'>
-                    <button className='submit' onClick={openLadderboard}>Submit</button>
-                </div>
+                <button className='submit' onClick={openLadderboard}>Submit</button>
             </form>
         </div>
     )
