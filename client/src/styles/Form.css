@@ -2,14 +2,19 @@
 
 .popup-form {
     position: fixed;
-    height: 100%; width: 100%;
-    display: none; flex-flow: column;
-    align-items: center; justify-content: center;
-    gap: 20px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     z-index: 10;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.45);
     font-family: 'Titan One', cursive;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .stopGame {
@@ -23,56 +28,112 @@
 }
 
 .popup-form .form {
-    width: 250px; height: 250px;
-    display: flex; flex-flow: column;
-    align-items: center; justify-content: space-between;
-    gap: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     background-color: #c2c2c2;
     padding: 20px;
+    position: relative;
+    gap: 20px;
 }
 
-.popup-form .form .form-title{
+.popup-form .form .form-title {
     font-size: 20px;
-    height: 80px;
     width: 100%;
+    padding-bottom: 20px;
     border-bottom: 1px solid black;
     display: flex;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-.popup-form .form .input-section{
-    display: flex; flex-flow: column; justify-content: center; align-items: center;
+.popup-form .form .input-section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
     gap: 10px;
-    height: 30%;
+    width: 100%;
 }
 
 .popup-form .form .input-section input {
     border: none;
-    height: 30px;
     border-radius: 10px;
     outline: none;
     box-sizing: border-box;
-    padding: 0px 20px;
-    width: 90%;
-}
-
-
-.popup-form .form .button-section{
-    display: flex; flex-flow: column;
-    height: 50px;
-    width: 80px;
-    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
 }
 
 .submit {
     background-color: rgb(30, 85, 204);
     border: none;
-    height: 80%;
     border-radius: 5px;
     color: white;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    padding: 10px 20px;
+}
+
+.custom-file-upload {
+    display: flex;
+    height: 250px !important;
+    width: 250px !important;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+
+.custom-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1000;
+    bottom: 0px;
+    right: 0px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: #041E42;
+}
+
+
+.custom-file-upload .icon svg {
+    height: 50%;
+    fill: rgb(255, 255, 255);
+}
+
+.custom-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-upload .text span {
+    font-weight: 400;
+    color: rgba(75, 85, 99, 1);
+
+}
+
+.custom-file-upload input {
+    display: none;
+    color: var(--text-color);
+}
+
+.preview__update-user {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
 }
