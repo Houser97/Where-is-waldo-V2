@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams, useRoutes } from 'react-router-dom'
 import '../styles/LeaderBoard.css'
+import LeaderboardOptions from './Leaderboard/LeaderboardOptions'
 import LoaderLeaderBoard from './Leaderboard/LoaderLeaderBoard'
 import PlayerCard from './Leaderboard/PlayerCard'
 import WinnerCard from './Leaderboard/WinnerCard'
 
 const LeaderBoard = () => {
 
-  const [scores, setScores] = useState([]);
+  const { state } = useLocation();
 
-  const { idGame } = useParams();
+  const [scores, setScores] = useState([]);
+  const [selectedGame, setselectedGame] = useState(state ? state.game : 'Cyberpunk-City')
 
   useEffect(() => {
-    fetch(`/api/get_scores/${idGame}`, {
+    if (!selectedGame.length) return;
+    fetch(`/api/get_scores/${selectedGame}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -23,7 +26,7 @@ const LeaderBoard = () => {
         if (!scores) return;
         setScores(scores)
       })
-  }, [])
+  }, [selectedGame])
 
   if (!scores.length) return (
     <div className='leaderboard__container'>
@@ -45,6 +48,7 @@ const LeaderBoard = () => {
 
   return (
     <div className='leaderboard__container'>
+      <LeaderboardOptions setGame={setselectedGame} selectedGame={selectedGame} />
       <div className='winners__container'>
         {winners.map(({ time, username, image }, index) => (
           <WinnerCard
