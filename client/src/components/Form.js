@@ -1,19 +1,18 @@
-import { useContext, useState } from 'react';
-import { gameContext } from '../App';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Form.css';
 import CropEasy from './crop/CropEasy';
 
 
 const Form = ({ isGameOver, time, game }) => {
 
-    const setPlayersArray = useContext(gameContext).setPlayersArray;
-    const setToggleLadderboard = useContext(gameContext).setToggleLadderboard;
-
     const [fileInputState, setFileInputState] = useState('');
     const [previewSource, setPreviewSource] = useState('https://res.cloudinary.com/dluwqcce9/image/upload/v1694961227/InTouch/qqaarw68ruwwluvcphkh.jpg');
     const [previewSourceCrop, setPreviewSourceCrop] = useState('');
     const [selectedFile, setSelectedFile] = useState(null)
     const [username, setUsername] = useState('')
+
+    const navigate = useNavigate()
 
     const handleUser = async (e) => {
         e.preventDefault();
@@ -40,14 +39,11 @@ const Form = ({ isGameOver, time, game }) => {
             },
             body: JSON.stringify({ username, time, image, game })
         }).then(response => response.json())
-            .then(result => {
-                console.log(result)
+            .then(() => {
+                navigate('/leaderboard', {
+                    state: { game }
+                })
             })
-    }
-
-    const openLadderboard = () => {
-        const ladder = document.querySelector(".ladderboard-section");
-        ladder.style.display = "flex";
     }
 
     const handleFileInputChange = (e) => {
@@ -101,7 +97,7 @@ const Form = ({ isGameOver, time, game }) => {
                     <label htmlFor='name'>Username</label>
                     <input id='name' name='name' maxLength={10} onChange={(e) => setUsername(e.target.value)} required></input>
                 </div>
-                <button className='submit' onClick={openLadderboard}>Submit</button>
+                <button className='submit'>Submit</button>
             </form>
         </div>
     )
