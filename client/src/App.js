@@ -33,7 +33,7 @@ function App() {
 
   const [finalTimeUser, setFinalTimeUser] = useState(0);
 
-  const[startGame, setStartGame] = useState(false); //Ayudará a iniciar COUNTER al presionar START en CHARACTERS
+  const [startGame, setStartGame] = useState(false); //Ayudará a iniciar COUNTER al presionar START en CHARACTERS
 
   useEffect(() => {
     const intervalId = setTimeout(() => {
@@ -47,35 +47,35 @@ function App() {
   }, [toggleMessage])
 
   useEffect(() => {
-    if(numberOfCharacters <= 0){
+    if (numberOfCharacters <= 0) {
       setIsGameOver(true);
     }
   }, [numberOfCharacters])
 
   useEffect(() => {
     // Hace aparecer Message solo cuando se halla un personaje.
-    if(characterHit){
+    if (characterHit) {
       setToggleMessage(true);
       setNumberOfCharacters(number => number - 1);
-    } 
+    }
   }, [characterHit])
 
   const getTime = (seconds) => {
-      setFinalTimeUser(previousTime => previousTime + seconds);
+    setFinalTimeUser(previousTime => previousTime + seconds);
   }
 
-  const gameProvider = {isGameOver, getTime, setStartGame, startGame, setCharacterHit, setToggleMessage,setPlayersArray, setToggleLadderboard}
+  const gameProvider = { isGameOver, getTime, setStartGame, startGame, setCharacterHit, setToggleMessage, setPlayersArray, setToggleLadderboard }
 
   return (
     <gameContext.Provider value={gameProvider}>
-        <div className="App">
-          <Header />
-          <Form isGameOver = {isGameOver} time = {finalTimeUser}/>
-          <Ladderboard toggleLadderboard={toggleLadderboard} playersArray = {playersArray} />
-          <Characters SelectedBoard={idGame} />
-          <Message toggleMessage={toggleMessage} characterHit = {characterHit} />
-          <Board SelectedBoard={idGame}/>
-        </div>
+      <div className="App">
+        <Header />
+        <Form isGameOver={isGameOver} time={finalTimeUser} game={idGame} />
+        <Ladderboard toggleLadderboard={toggleLadderboard} playersArray={playersArray} />
+        <Characters SelectedBoard={idGame} />
+        <Message toggleMessage={toggleMessage} characterHit={characterHit} />
+        <Board SelectedBoard={idGame} />
+      </div>
     </gameContext.Provider>
   );
 }
