@@ -4,7 +4,7 @@
     position: fixed;
     height: 100vh;
     width: 100%;
-    display: flex;
+    display: none;
     flex-flow: column;
     align-items: center;
     justify-content: center;
@@ -15,6 +15,10 @@
     background-color: rgba(0, 0, 0, 0.45);
     font-family: 'Titan One', cursive;
     box-sizing: border-box;
+}
+
+.show-form {
+    display: flex;
 }
 
 .stopGame {
