@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: '/leaderboard/:idGame',
+    path: '/leaderboard',
     element: <LeaderBoard />
   }
 ])
