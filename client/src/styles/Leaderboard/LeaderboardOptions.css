@@ -1,0 +1,40 @@
+.options__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 30px;
+    background-color: var(--first-place-bg);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.options__container .option__leaderboard {
+    display: flex;
+    position: relative;
+    padding: 7px 0px;
+    overflow-x: hidden;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.visual__selector {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    transform: translateX(-100%);
+    transition: transform 250ms ease-in-out;
+}
+
+.show__visual-selector {
+    transform: translateX(0%);
+}
