@@ -5,7 +5,7 @@ import '../../styles/Menu/HeaderMenu.css'
 const HeaderMenu = ({ children }) => (
   <div className='header__menu'>
     {children}
-    <Link to='leaderboard' class="leaderboard__button"><span>Leaderboard</span></Link>
+    <Link to='leaderboard' className="leaderboard__button"><span>Leaderboard</span></Link>
   </div>
 )
 
