@@ -15,7 +15,7 @@ const LeaderBoard = () => {
 
   useEffect(() => {
     if (!selectedGame.length) return;
-    fetch(`/api/get_scores/${selectedGame}`, {
+    fetch(`/api/scores/${selectedGame}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

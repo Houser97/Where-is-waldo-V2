@@ -32,7 +32,7 @@ const Form = ({ isGameOver, time, game }) => {
 
     const saveUser = (image, username) => {
         if (!username.length) return;
-        fetch('/api/register_score', {
+        fetch('/api/scores', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
