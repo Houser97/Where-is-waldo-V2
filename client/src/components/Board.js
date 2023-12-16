@@ -7,7 +7,7 @@ import { BOARDS } from '../assets';
 
 const HEADER_HEIGHT = 76;
 
-const Board = ({SelectedBoard}) => {
+const Board = ({ SelectedBoard }) => {
 
   const SelectedGame = BOARDS[SelectedBoard]
 
@@ -17,17 +17,17 @@ const Board = ({SelectedBoard}) => {
   const square = useRef(null);
   const charactersListRef = useRef(null);
 
-  const windowSize = useWindowSize(); 
+  const windowSize = useWindowSize();
 
-  const centerElement = (x,y, elementRef) =>{
-      const widthElement = elementRef.offsetWidth/2;
-      const heightElement = elementRef.offsetHeight/2;
+  const centerElement = (x, y, elementRef) => {
+    const widthElement = elementRef.offsetWidth / 2;
+    const heightElement = elementRef.offsetHeight / 2;
 
-      elementRef.style.top = `${y-heightElement}px`
-      elementRef.style.left = `${x-widthElement}px`
+    elementRef.style.top = `${y - heightElement}px`
+    elementRef.style.left = `${x - widthElement}px`
   }
 
-  const PlaceElement = (x,y, elementRef) =>{
+  const PlaceElement = (x, y, elementRef) => {
 
     const OFFSET_X_CHARACTER_LIST = windowSize.width > 500 ? 40 : 8;
     const OFFSET_Y_CHARACTER_LIST = windowSize.width > 500 ? 0 : 8;
@@ -38,27 +38,27 @@ const Board = ({SelectedBoard}) => {
     const widthElement = elementRef.offsetWidth;
     const heightElement = elementRef.offsetHeight;
 
-    const overflowInX = OverflowsInX(widthImage, widthElement,x, OFFSET_X_CHARACTER_LIST)
-    const overflowInY = OverflowsInY(heightImage,heightElement,y, OFFSET_Y_CHARACTER_LIST)
+    const overflowInX = OverflowsInX(widthImage, widthElement, x, OFFSET_X_CHARACTER_LIST)
+    const overflowInY = OverflowsInY(heightImage, heightElement, y, OFFSET_Y_CHARACTER_LIST)
 
-    elementRef.style.top = overflowInY ? `${y-heightElement-OFFSET_Y_CHARACTER_LIST-30}px`:`${y+OFFSET_Y_CHARACTER_LIST }px`
-    elementRef.style.left = overflowInX ? `${x-OFFSET_X_CHARACTER_LIST-widthElement}px`:`${x+OFFSET_X_CHARACTER_LIST }px`
-}
+    elementRef.style.top = overflowInY ? `${y - heightElement - OFFSET_Y_CHARACTER_LIST - 30}px` : `${y + OFFSET_Y_CHARACTER_LIST}px`
+    elementRef.style.left = overflowInX ? `${x - OFFSET_X_CHARACTER_LIST - widthElement}px` : `${x + OFFSET_X_CHARACTER_LIST}px`
+  }
 
-const OverflowsInX = (containerWidth, elementWidth, x, offsetX = 0) => {
-  return x + offsetX + elementWidth > containerWidth
-}
+  const OverflowsInX = (containerWidth, elementWidth, x, offsetX = 0) => {
+    return x + offsetX + elementWidth > containerWidth
+  }
 
-const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
-  return y + offsetY + 30 + elementHeight > containerHeight
-}
+  const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
+    return y + offsetY + 30 + elementHeight > containerHeight
+  }
 
-  const setRelativeCoordinates = (x,y) => {
+  const setRelativeCoordinates = (x, y) => {
     const widthImage = imgRef.current.offsetWidth;
     const heightImage = imgRef.current.offsetHeight;
 
-    let relX = Math.round((x/widthImage)*100);
-    let relY = Math.round(((y)/heightImage)*100);
+    let relX = Math.round((x / widthImage) * 100);
+    let relY = Math.round(((y) / heightImage) * 100);
 
     return [relX, relY];
   }
@@ -66,29 +66,26 @@ const OverflowsInY = (containerHeight, elementHeight, y, offsetY = 0) => {
   const setMagicDiv = (e) => {
     const magicDiv = square.current;
     const CharactersListRef = charactersListRef.current
-    
+
     magicDiv.classList.add('show-characters');
     CharactersListRef.classList.add('show-characters');
 
     let x = e.pageX;
     let y = e.pageY - HEADER_HEIGHT;
 
-    
-    centerElement(x,y, magicDiv);
-    PlaceElement(x,y, CharactersListRef);
-    [x, y] = setRelativeCoordinates(x,y);
+    centerElement(x, y, magicDiv);
+    PlaceElement(x, y, CharactersListRef);
+    [x, y] = setRelativeCoordinates(x, y);
 
-    console.log(x,y)
-
-    setCoordsUser({x, y});
-  } 
+    setCoordsUser({ x, y });
+  }
 
   return (
     <div className='image-container'>
-        <img src={SelectedGame} alt='cartoon-network' className='img-project' ref={imgRef} onClick = {setMagicDiv}></img>
-        <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
-        <CharactersList CharacterListRef = {charactersListRef} scopeRef={square} coordsUser = {coordsUser} SelectedGame = {SelectedGame} SelectedBoard = {SelectedBoard}/>
-        <Scope scopeRef={square}/>
+      <img src={SelectedGame} alt='cartoon-network' className='img-project' ref={imgRef} onClick={setMagicDiv}></img>
+      <div className='credits'>Photo by: <a href='https://www.artstation.com/chekavo'>Egor Klyuchnyk</a></div>
+      <CharactersList CharacterListRef={charactersListRef} scopeRef={square} coordsUser={coordsUser} SelectedGame={SelectedGame} SelectedBoard={SelectedBoard} />
+      <Scope scopeRef={square} />
     </div>
   )
 }
