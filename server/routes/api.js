@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const apiController = require('../controllers/apiController');
 
-router.get('/get_coordinates/:character', apiController.get_coordinates);
+router.get('/coordinates/:character', apiController.get_coordinates);
 
-router.post('/register_score', apiController.set_score);
+router.post('/scores', apiController.set_score);
 
-router.get('/get_scores/:game', apiController.get_scores);
+router.get('/scores/:game', apiController.get_scores);
 
 module.exports = router;
