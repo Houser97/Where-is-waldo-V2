@@ -130,7 +130,7 @@
 }
 
 .carousel__btns {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -159,6 +159,19 @@
 
 .right__arrow {
     right: 10px;
+}
+
+.carousel__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.selected__dot {
+    background: #ff3d00;
 }
 
 @media (min-height: 1000px) {
@@ -202,5 +215,9 @@
         flex-direction: column;
         position: relative;
         padding: 0px;
+    }
+
+    .carousel__btns {
+        display: flex;
     }
 }
