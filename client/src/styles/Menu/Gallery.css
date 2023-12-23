@@ -209,6 +209,12 @@
 
 }
 
+@media (max-width: 1100px) {
+    .gallery__container {
+        padding: 10px;
+    }
+}
+
 @media (max-width: 600px) {
     .gallery__container {
         display: flex;
