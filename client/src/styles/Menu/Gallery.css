@@ -114,6 +114,28 @@
     justify-content: center;
 }
 
+.carousel__games {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow: hidden;
+}
+
+.carousel__game {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    transition: transform 250ms ease-in-out;
+    transform: translateX(0%);
+    flex-shrink: 0;
+    /*Permite que cada link ocupe todo el contendor*/
+}
+
+.carousel__games a {
+    width: 100%;
+    position: relative;
+}
+
 @media (min-height: 1000px) {
     .gallery__container {
         height: calc(100vh - 300px);
@@ -135,5 +157,12 @@
 
     .gallery__container:has(.three:hover) {
         grid-template-columns: 0.5fr 0.5fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery__container {
+        display: flex;
+        flex-direction: row;
     }
 }
