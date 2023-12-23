@@ -5,6 +5,10 @@ import { useImageIsLoaded } from '../hooks/useImageIsLoaded';
 import Loader from '../Loader';
 import useWindowSize from '../../hooks/windowSizeHook';
 
+const MARGIN_RIGHT = 40;
+
+const Arrow = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>greater-than</title><path d="M5.5,4.14L4.5,5.86L15,12L4.5,18.14L5.5,19.86L19,12L5.5,4.14Z" /></svg>
+
 const Gallery = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,7 +32,7 @@ const Gallery = () => {
     }
     return <div className='carousel__games'>
       {games.map((game, index) => (
-        <div key={game.className} className='carousel__game' style={{ transform: `translateX(calc(-${currentIndex * 100}%))` }}>
+        <div key={game.className} className='carousel__game' style={{ transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * MARGIN_RIGHT}px))` }}>
           <Link key={index} to={game.to} className={game.className} data-text={game.dataText}></Link>
         </div>
       ))}
@@ -44,7 +48,6 @@ const Gallery = () => {
     if (newIndex >= games.length) {
       newIndex = 0
     }
-    console.log(newIndex)
     setCurrentIndex(newIndex)
   }
 
@@ -52,9 +55,11 @@ const Gallery = () => {
     <div className={`${isImageLoaded ? 'gallery__container' : 'loader__container'}`}>
       {isImageLoaded ? (
         <>
-          <button className='button__arrow left__arrow' onClick={() => handleClick(1)}>Left</button>
           {ResponsiveGames()}
-          <button className='button__arrow right__arrow' onClick={() => handleClick(0)}>Right</button>
+          <div className='carousel__btns'>
+            <button className='button__arrow left__arrow' onClick={() => handleClick(1)}>{Arrow()}</button>
+            <button className='button__arrow right__arrow' onClick={() => handleClick(0)}>{Arrow()}</button>
+          </div>
         </>
       )
         : <Loader />}
