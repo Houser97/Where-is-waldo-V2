@@ -9,6 +9,14 @@ const MARGIN_RIGHT = 40;
 
 const Arrow = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>greater-than</title><path d="M5.5,4.14L4.5,5.86L15,12L4.5,18.14L5.5,19.86L19,12L5.5,4.14Z" /></svg>
 
+const CarouselDots = ({ totalDots, selectedDot, setCurrentIndex }) => {
+  const dots = Array.from({ length: totalDots }, (_, index) => (
+    <span key={index} className={`carousel__dot ${selectedDot === index ? 'selected__dot' : ''}`} onClick={() => setCurrentIndex(index)}></span>
+  ));
+
+  return <>{dots}</>;
+}
+
 const Gallery = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,6 +66,7 @@ const Gallery = () => {
           {ResponsiveGames()}
           <div className='carousel__btns'>
             <button className='button__arrow left__arrow' onClick={() => handleClick(1)}>{Arrow()}</button>
+            <CarouselDots totalDots={games.length} selectedDot={currentIndex} setCurrentIndex={setCurrentIndex} />
             <button className='button__arrow right__arrow' onClick={() => handleClick(0)}>{Arrow()}</button>
           </div>
         </>
