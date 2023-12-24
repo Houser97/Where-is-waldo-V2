@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  --blue-background: rgb(4, 21, 41);
+  --blue-background: #151729;
   --blue-background-hover: rgba(72, 91, 112, 0.432);
   overflow: hidden;
 }
