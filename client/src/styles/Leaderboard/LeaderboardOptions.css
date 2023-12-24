@@ -9,6 +9,7 @@
     max-width: 800px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    position: relative;
 }
 
 .options__container .option__leaderboard {
@@ -38,6 +39,36 @@
 .show__visual-selector {
     transform: translateX(0%);
 }
+
+.home__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: white;
+    border: 2px solid white;
+    position: absolute;
+    bottom: -60px;
+    left: 30px;
+    color: white;
+    font-weight: bold;
+    padding: 2px 10px;
+    gap: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 350ms ease-in-out;
+}
+
+.home__button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: #151729;
+    fill: #151729;
+}
+
+.home__button svg {
+    width: 30px;
+    height: 30px;
+}
+
 
 
 @media (max-width: 500px) {
