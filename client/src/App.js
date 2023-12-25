@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Message from './components/Message';
 import Form from './components/Form';
 import Board from './components/Board';
-import Ladderboard from './components/Ladderboard';
 import { useParams } from 'react-router-dom';
 import Footer from './components/Footer';
 
@@ -17,10 +16,6 @@ function App() {
   /*const OFFSET_Y = 140; // Corresponde a la altura del Header*/
 
   const { idGame } = useParams();
-
-  //Estados de Ladderboard
-  const [playersArray, setPlayersArray] = useState([]);
-  const [toggleLadderboard, setToggleLadderboard] = useState(false);
 
   //Estados de Message
   const [toggleMessage, setToggleMessage] = useState(false);
@@ -65,14 +60,13 @@ function App() {
     setFinalTimeUser(previousTime => previousTime + seconds);
   }
 
-  const gameProvider = { isGameOver, getTime, setStartGame, startGame, setCharacterHit, setToggleMessage, setPlayersArray, setToggleLadderboard }
+  const gameProvider = { isGameOver, getTime, setStartGame, startGame, setCharacterHit, setToggleMessage }
 
   return (
     <gameContext.Provider value={gameProvider}>
       <div className="App">
         <Header />
         <Form isGameOver={isGameOver} time={finalTimeUser} game={idGame} />
-        <Ladderboard toggleLadderboard={toggleLadderboard} playersArray={playersArray} />
         <Characters SelectedBoard={idGame} />
         <Message toggleMessage={toggleMessage} characterHit={characterHit} />
         <Board SelectedBoard={idGame} />
