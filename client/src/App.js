@@ -7,6 +7,7 @@ import Form from './components/Form';
 import Board from './components/Board';
 import Ladderboard from './components/Ladderboard';
 import { useParams } from 'react-router-dom';
+import Footer from './components/Footer';
 
 export const gameContext = createContext();
 export const userContext = createContext();
@@ -75,6 +76,7 @@ function App() {
         <Characters SelectedBoard={idGame} />
         <Message toggleMessage={toggleMessage} characterHit={characterHit} />
         <Board SelectedBoard={idGame} />
+        <Footer />
       </div>
     </gameContext.Provider>
   );
