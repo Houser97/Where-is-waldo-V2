@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/Header.css';
-import ButtonHome from './ButtonHome';
+import HomeButton from './HomeButton';
 import CharactersStatus from './CharactersStatus';
 import Timer from './Timer';
 
@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <header>
             <div className='timer__home-container'>
-                <ButtonHome />
+                <HomeButton />
                 <Timer />
             </div>
             <div className='open-close-characters' onClick={() => setToggleSvg(prev => !prev)}>
