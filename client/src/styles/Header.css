@@ -8,7 +8,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 60px;
+    padding: 15px 40px;
     font-family: 'Titan One', cursive;
     /*height: 140px; Se especifica altura para tener el valor a restar a e.pageY y colocar Magic Div*/
     position: sticky;
@@ -17,14 +17,14 @@ header {
     height: 76px;
 }
 
-.open-close-characters{
+.open-close-characters {
     width: 45px;
     height: 45px;
     position: relative;
     cursor: pointer;
 }
 
-.svg-header{
+.svg-header {
     width: 100%;
     height: 100%;
     color: white;
@@ -33,44 +33,56 @@ header {
     left: 0px;
 }
 
-.open-svg{
+.open-svg {
     opacity: 1;
 }
 
-.close-svg{
+.close-svg {
     opacity: 0;
 }
 
-.svg-show{
+.svg-show {
     opacity: 1;
 }
 
-.svg-hide{
+.svg-hide {
     opacity: 0;
 }
 
-
-@media (max-width: 830px) {
-    header{
-        font-size: 30px;
-    }
+.timer__home-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
 }
+
+.timer__home-container .home__button {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 5px 8px;
+}
+
+.timer__home-container .home__button svg {
+    width: 25px;
+    height: 25px;
+}
+
 
 @media (max-width: 700px) {
-    header{
-        font-size: 25px;
+    header {
         padding: 15px 20px;
-    }
-}
-
-@media (max-width: 420px) {
-    header{
-        font-size: 20px;
-        padding: 15px 20px;
+        font-size: 30px;
     }
 
-    .open-close-characters{
-        width: 35px;
-        height: 35px;
+    .timer__home-container .home__button span {
+        display: none;
+    }
+
+    .timer__home-container .home__button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        padding: 0px;
     }
 }
