@@ -1,6 +1,7 @@
 .menu__container {
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
     height: 100%;
     background-color: var(--menu-background);
     display: flex;
