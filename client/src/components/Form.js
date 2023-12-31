@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Form.css';
 import CropEasy from './crop/CropEasy';
+import LoaderLeaderBoard from './Leaderboard/LoaderLeaderBoard';
 
 
 const Form = ({ isGameOver, time, game }) => {
@@ -11,11 +12,14 @@ const Form = ({ isGameOver, time, game }) => {
     const [previewSourceCrop, setPreviewSourceCrop] = useState('');
     const [selectedFile, setSelectedFile] = useState(null)
     const [username, setUsername] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
 
     const handleUser = async (e) => {
         e.preventDefault();
+        if (isLoading) return
+        setIsLoading(true)
         if (!selectedFile) {
             saveUser('', username);
             return;
@@ -40,6 +44,7 @@ const Form = ({ isGameOver, time, game }) => {
             body: JSON.stringify({ username, time, image, game })
         }).then(response => response.json())
             .then(() => {
+                setIsLoading(false)
                 navigate('/leaderboard', {
                     state: { game }
                 })
@@ -97,7 +102,9 @@ const Form = ({ isGameOver, time, game }) => {
                     <label htmlFor='name'>Username</label>
                     <input id='name' name='name' maxLength={10} onChange={(e) => setUsername(e.target.value)} required></input>
                 </div>
-                <button className='submit'>Submit</button>
+                <button className='submit'>
+                    {isLoading ? <LoaderLeaderBoard /> : 'Submit'}
+                </button>
             </form>
         </div>
     )
