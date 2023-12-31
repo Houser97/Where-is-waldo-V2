@@ -23,9 +23,9 @@
     clip-path: circle(75%);
     transition: all 250ms ease-in-out 0ms, clip-path 250ms ease-in-out 200ms;
 }
-  
+
 .list-characters li {
-    list-style-position:inside;
+    list-style-position: inside;
     cursor: pointer;
     padding: 10px 20px;
     font-weight: bold;
@@ -36,20 +36,33 @@
     border-top: 2px solid white;
 }
 
-.list-characters .first-li-element{
+.list-characters .first-li-element {
     border: none;
 }
 
-  
+
 .list-characters .li-element:hover {
     background-color: var(--blue-background-hover);
 }
-  
+
 .list-characters .li-element span {
     text-align: start;
 }
-  
+
 .img__character-item {
     height: auto;
     width: 43px;
+}
+
+@media (max-width: 500px) {
+    .list-characters li {
+        padding: 8px;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .img__character-item {
+        height: auto;
+        width: 30px;
+    }
 }
