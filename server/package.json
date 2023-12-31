@@ -8,6 +8,7 @@
     "deployment": "cd .. && cd client && npm run build && cd .. && cd server && cp -a ../client/build/. ./public"
   },
   "dependencies": {
+    "cloudinary": "^1.41.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
