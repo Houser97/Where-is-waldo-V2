@@ -17,6 +17,15 @@
     --third-green: #44e38a;
 }
 
+.leaderboard__container-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+}
+
 .winners__container {
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 150px));

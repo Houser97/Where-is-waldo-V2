@@ -29,7 +29,7 @@ const LeaderBoard = () => {
   }, [selectedGame])
 
   if (!scores.length) return (
-    <div className='leaderboard__container'>
+    <div className='leaderboard__container-loader'>
       <LoaderLeaderBoard />
     </div>
   )
