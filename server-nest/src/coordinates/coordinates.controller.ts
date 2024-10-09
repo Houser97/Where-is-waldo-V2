@@ -5,12 +5,12 @@ import { CoordinatesService } from './coordinates.service';
 export class CoordinatesController {
 
     constructor(
-        private readonly CoordinatesService: CoordinatesService
+        private readonly coordinatesService: CoordinatesService
     ) { }
 
 
     @Get(':character')
-    getByCharacterName(@Param('character') character: string) {
-
+    findByCharacterName(@Param('character') character: string) {
+        return this.coordinatesService.findOne(character);
     }
 }
