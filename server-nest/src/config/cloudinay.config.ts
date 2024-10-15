@@ -1,10 +1,12 @@
-// src/config/cloudinary.config.ts
+import { ConfigService } from '@nestjs/config';
 import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+export const configureCloudinary = (configService: ConfigService) => {
+    cloudinary.config({
+        cloud_name: configService.get<string>('CLOUDINARY_CLOUD_NAME'),
+        api_key: configService.get<string>('CLOUDINARY_API_KEY'),
+        api_secret: configService.get<string>('CLOUDINARY_API_SECRET'),
+    });
+};
 
 export default cloudinary;
