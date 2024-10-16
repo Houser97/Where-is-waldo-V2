@@ -7,6 +7,7 @@ import { EnvConfiguration } from './config/app.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -17,9 +18,10 @@ import { join } from 'path';
       rootPath: join(__dirname, '..', 'public'),
     }),
     MongooseModule.forRoot(process.env.MONGODB, {
-      dbName: 'nombre de db aca'
+      dbName: process.env.DATABASE
     }),
-    CoordinatesModule
+    CoordinatesModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
