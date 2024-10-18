@@ -9,8 +9,8 @@ export class Coordinates extends Document {
     })
     character: string;
 
-    x: Number;
-    y: Number;
+    x: number;
+    y: number;
 }
 
 export const CoordinatesSchema = SchemaFactory.createForClass(Coordinates);
