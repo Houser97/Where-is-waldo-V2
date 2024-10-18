@@ -69,7 +69,7 @@ nest g co coordinates
 1. Crear servicio para interactuar con la coleccion de coordenadas en la base de datos.
 
 ```bash
-npm g s coordinates
+nest g s coordinates
 ```
 
 2. Inyectar servicio en controlador.
@@ -165,3 +165,9 @@ import { join } from 'path';
 export class AppModule { }
 
 ```
+
+
+
+https://www.devleader.ca/
+
+https://blog.bitsrc.io/upload-file-with-nestjs-d7dd74701b38
